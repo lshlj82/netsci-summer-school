@@ -87,7 +87,7 @@ h3 .en{font-family:var(--math);font-style:italic;font-weight:400;color:var(--mut
 .eq i{font-style:italic}
 .eq.plain{border-color:var(--rule)}
 .pen{font-weight:500;font-size:.95rem;line-height:1.6;color:var(--pink);margin:4px 0 16px;display:block;border-left:3px solid currentColor;padding:2px 0 2px 12px}
-.pen::before{content:'강의노트 메모';display:block;font-size:.75rem;font-weight:400;color:var(--muted)}
+.pen::before{content:'강의 메모';display:block;font-size:.75rem;font-weight:400;color:var(--muted)}
 .no-wrap{white-space:nowrap}
 .pen.g{color:var(--green)} .pen.c{color:var(--cyan)}
 .box{border:2px solid var(--green);border-radius:6px;padding:12px 16px;margin:12px 0 16px;background:var(--panel)}
@@ -208,8 +208,9 @@ textarea.seq{width:100%;font:inherit;font-family:var(--math);font-size:1rem;colo
     <p class="credit">이 데모는 <strong>Claude Opus 5.5</strong>가 제작했으며, <strong>경상국립대학교 물리학과 <a href="https://sites.google.com/view/netscilab/principal-investigator" target="_blank" rel="noopener">이상훈</a> 교수</strong>의 강의자료(<a href="https://www.complexity.kr/?p=1268" target="_blank" rel="noopener">2024 복잡계 여름학교</a>, ‘거듭제곱 법칙과 척도 없는 네트워크’ 강의)를 기반으로 합니다.</p>
   </div>
   <figure class="hero-fig" style="margin:0">
-    <canvas id="hero" aria-label="같은 평균의 지수함수 분포와 거듭제곱 분포에서 뽑은 값들의 비교"></canvas>
-    <figcaption>평균이 같은 지수함수 분포(파랑)와 거듭제곱 분포(분홍)에서 300개씩 뽑은 값. 얇은 꼬리에서는 모든 값이 비슷한 범위에 머물지만, 두꺼운 꼬리에서는 가끔 엄청나게 큰 값이 나옵니다.</figcaption>
+    <canvas id="heroP" aria-label="평균이 같은 지수함수 분포와 거듭제곱 분포의 확률밀도함수"></canvas>
+    <canvas id="hero" aria-label="두 분포에서 300개씩 뽑은 값" style="margin-top:6px"></canvas>
+    <figcaption>위: 평균이 3으로 같은 지수함수 분포 <span class="m"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>3</mn><mo stretchy="false">)</mo><msup><mi>e</mi><mrow><mo>−</mo><mi>x</mi><mi mathvariant="normal">/</mi><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">p(x) = (1/3)e^{-x/3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.138em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1/3</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight">x</span><span class="mord mtight">/3</span></span></span></span></span></span></span></span></span></span></span></span></span>(파랑)와 거듭제곱 분포 <span class="m"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mi>γ</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mi>x</mi><mrow><mo>−</mo><mi>γ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">p(x) = (\gamma - 1)x^{-\gamma }</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0213em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7713em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.05556em;">γ</span></span></span></span></span></span></span></span></span></span></span></span></span>, <span class="m"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x \ge 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span>, <span class="m"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><mn>2.5</mn></mrow><annotation encoding="application/x-tex">\gamma = 2.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2.5</span></span></span></span></span>(분홍)의 로그-로그 그래프. 아래: 각 분포에서 300개씩 뽑은 값. 얇은 꼬리에서는 모든 값이 비슷한 범위에 머물지만, 두꺼운 꼬리에서는 가끔 엄청나게 큰 값이 나옵니다. 누르면 다시 뽑습니다.</figcaption>
   </figure>
 </header>
 
@@ -265,6 +266,11 @@ textarea.seq{width:100%;font:inherit;font-family:var(--math);font-size:1rem;colo
         <button class="btn" data-eg="4,4,1,1,1,1">4, 4, 1, 1, 1, 1</button>
       </div>
       <div class="verdict" id="egV"></div>
+      <div id="egEx" style="display:none">
+        <p class="sub">구현 예시 하나 (무작위로 고른 구조)</p>
+        <canvas id="egC" aria-label="입력한 링크수 목록으로 만든 네트워크 예시"></canvas>
+        <div class="ctl" style="margin-top:6px"><button class="btn" id="egAgain">다른 예시 보기</button><span class="hint" id="egExNote" style="margin:0"></span></div>
+      </div>
       <div class="ctl" style="margin-top:14px">
         <label class="sl"><span class="m"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span></span></span></span></span> <input type="range" id="egG" min="1.3" max="3.5" step="0.05" value="1.8" aria-label="링크수 지수"><output id="egGOut">1.80</output></label>
         <label class="sl">N <select id="egN" aria-label="노드 수"><option value="100">100</option><option value="1000" selected>1 000</option><option value="10000">10 000</option></select></label>
@@ -294,12 +300,13 @@ textarea.seq{width:100%;font:inherit;font-family:var(--math);font-size:1rem;colo
     <div class="demo">
       <div class="ctl">
         <label>링크수 목록 <select id="cmSeq" aria-label="링크수 목록 선택">
-          <option value="a" selected>2, 2, 2, 1, 1 (강의자료의 예)</option>
+          <option value="a" selected>2, 2, 2, 1, 1</option>
           <option value="b">5, 3, 2, 2, 2, 1, 1, 1, 1</option>
-          <option value="c">거듭제곱 분포에서 12개 뽑기</option>
+          <option value="c">거듭제곱 분포(γ = 2.5)에서 12개 뽑기</option>
+          <option value="d">거듭제곱 분포(γ = 2.5)에서 80개 뽑기</option>
         </select></label>
       </div>
-      <div class="ctl"><button class="btn primary" id="cmStep">한 쌍 짝짓기</button><button class="btn" id="cmAll">모두 짝짓기</button><button class="btn" id="cmReset">다시 조립하기</button></div>
+      <div class="ctl"><button class="btn primary" id="cmPlay">자동 조립</button><button class="btn" id="cmStep">한 쌍 짝짓기</button><button class="btn" id="cmReset">다시 조립하기</button></div>
       <canvas id="cm" aria-label="구조 모형으로 조립하는 네트워크"></canvas>
       <div class="read" id="cmRead"></div>
       <p class="sub">난수 r을 누적 분포 D(k)로 링크수 k로 바꾸기 (γ = 2.5)</p>
@@ -347,7 +354,7 @@ textarea.seq{width:100%;font:inherit;font-family:var(--math);font-size:1rem;colo
       <canvas id="hp" aria-label="숨은 매개변수 모형으로 만든 네트워크의 링크수 분포"></canvas>
       <div class="legend"><span><i style="background:var(--pink)"></i>로그 묶기한 링크수 분포 (N = 3000, 3번 평균)</span><span><i style="background:var(--amber)"></i>기울기 −(1 + 1/α)</span></div>
       <div class="read" id="hpRead"></div>
-      <p class="sub">강의자료의 작은 예: 숨은 매개변수 η = (1, 1.5, 2, 0.5)일 때 연결 확률</p>
+      <p class="sub">작은 예: 숨은 매개변수 η = (1, 1.5, 2, 0.5)일 때 연결 확률</p>
       <div style="overflow-x:auto"><table class="tbl" id="hpTbl" style="min-width:0"></table></div>
     </div>
   </div>
@@ -428,9 +435,9 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
   <ol class="refs">
     <li>『<a href="https://www.acornpub.co.kr/product/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%82%AC%EC%9D%B4%EC%96%B8%EC%8A%A4/5911/category/25/display/1/" target="_blank" rel="noopener">네트워크 사이언스</a>』 (에이콘출판사, 2023), <a href="https://scholar.google.com/citations?user=YtV_KAgAAAAJ" target="_blank" rel="noopener">이미진</a>·<a href="https://scholar.google.com/citations?user=F_tGTBYAAAAJ" target="_blank" rel="noopener">윤진혁</a>·<a href="https://sites.google.com/view/netscilab/principal-investigator" target="_blank" rel="noopener">이상훈</a>·<a href="https://scholar.google.com/citations?user=kXggWVUAAAAJ" target="_blank" rel="noopener">이은</a>·<a href="https://scholar.google.com/citations?user=EAxaIyYAAAAJ&amp;hl=en" target="_blank" rel="noopener">조항현</a>·<a href="https://scholar.google.dk/citations?user=52OfnhEAAAAJ" target="_blank" rel="noopener">김희태</a>·<a href="https://scholar.google.com/citations?user=GUpdvGoAAAAJ" target="_blank" rel="noopener">손승우</a> 옮김. 원서: <a href="https://scholar.google.com/citations?user=vsj2slIAAAAJ&amp;hl=en" target="_blank" rel="noopener">Albert-László Barabási</a>, <i><a href="https://networksciencebook.com/" target="_blank" rel="noopener">Network Science</a></i> (Cambridge University Press, 2016). 4장 「척도 없는 성질」.</li>
     <li>『<a href="https://www.acornpub.co.kr/product/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%B6%84%EC%84%9D/5797/category/25/display/1/" target="_blank" rel="noopener">네트워크 분석</a>』 (에이콘출판사, 2022), <a href="https://scholar.google.com/citations?user=GUpdvGoAAAAJ" target="_blank" rel="noopener">손승우</a>·<a href="https://scholar.google.com/citations?user=4nirJyUAAAAJ" target="_blank" rel="noopener">엄영호</a>·<a href="https://sites.google.com/view/netscilab/principal-investigator" target="_blank" rel="noopener">이상훈</a>·<a href="https://scholar.google.com/citations?user=kXggWVUAAAAJ" target="_blank" rel="noopener">이은</a>·<a href="https://scholar.google.dk/citations?user=52OfnhEAAAAJ" target="_blank" rel="noopener">김희태</a>·<a href="https://scholar.google.com/citations?user=YtV_KAgAAAAJ" target="_blank" rel="noopener">이미진</a> 옮김. 원서: <a href="https://scholar.google.com/citations?user=f_kGJwkAAAAJ" target="_blank" rel="noopener">Filippo Menczer</a>, <a href="https://scholar.google.com/citations?user=NDrCCokAAAAJ" target="_blank" rel="noopener">Santo Fortunato</a>, and <a href="https://scholar.google.com/citations?user=oZC6UJsAAAAJ" target="_blank" rel="noopener">Clayton A. Davis</a>, <i><a href="https://www.amazon.com/First-Course-Network-Science/dp/1108471137" target="_blank" rel="noopener">A First Course in Network Science</a></i> (Cambridge University Press, 2020). 3장 「허브」.</li>
-    <li>K.-I. Goh, B. Kahng, and D. Kim, “Universal Behavior of Load Distribution in Scale-Free Networks,” <i>Physical Review Letters</i> <b>87</b>, 278701 (2001).</li>
+    <li>K.-I. Goh, B. Kahng, and D. Kim, “<a href="https://doi.org/10.1103/PhysRevLett.87.278701" target="_blank" rel="noopener">Universal Behavior of Load Distribution in Scale-Free Networks</a>,” <i>Physical Review Letters</i> <b>87</b>, 278701 (2001).</li>
     <li>S. A. Frank, “<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1420-9101.2009.01775.x" target="_blank" rel="noopener">The common patterns of nature</a>,” <i>Journal of Evolutionary Biology</i> <b>22</b>(8), 1563–1585 (2009).</li>
-    <li>D. Sornette and G. Ouillon, “Dragon-kings: Mechanisms, statistical methods and empirical evidence,” <i>The European Physical Journal Special Topics</i> <b>205</b>, 1–26 (2012).</li>
+    <li>D. Sornette and G. Ouillon, “<a href="https://link.springer.com/article/10.1140/epjst/e2012-01559-5" target="_blank" rel="noopener">Dragon-kings: Mechanisms, statistical methods and empirical evidence</a>,” <i>The European Physical Journal Special Topics</i> <b>205</b>, 1–26 (2012).</li>
   </ol>
 </section>
 
@@ -486,18 +493,20 @@ function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a
 const MT_FUNCS=new Set(['ln','log','exp','sin','cos','max','min','lim','const','Re','Im']);
 function mtParse(s){const out=[];let i=0;const grab=()=>{if(s[i]==='{'){let d=1,j=i+1;while(j<s.length&&d){if(s[j]==='{')d++;else if(s[j]==='}')d--;j++;}const g=s.slice(i+1,j-1);i=j;return g;}const ch=s[i];i++;return ch;};
   let buf='';const flush=()=>{if(buf){out.push({t:'txt',v:buf});buf='';}};
-  while(i<s.length){const ch=s[i];if(ch==='_'||ch==='^'){flush();i++;out.push({t:ch==='_'?'sub':'sup',v:mtParse(grab())});}else{buf+=ch;i++;}}flush();return out;}
+  while(i<s.length){const ch=s[i];if(ch==='_'||ch==='^'){flush();i++;out.push({t:ch==='_'?'sub':'sup',v:mtParse(grab())});}else if(ch==='√'&&s[i+1]==='{'){flush();i++;out.push({t:'sqrt',v:mtParse(grab())});}else{buf+=ch;i++;}}flush();return out;}
 function mtRuns(str,script){const runs=[];const re=/([A-Za-z\u1E00-\u1EFF\u03B1-\u03C9][\u0300-\u036F\u2032]*(?:[A-Za-z\u1E00-\u1EFF][\u0300-\u036F\u2032]*)*)|([\uAC00-\uD7A3\u3131-\u318E]+[\uAC00-\uD7A3\u3131-\u318E\s]*)|([^A-Za-z\u1E00-\u1EFF\u03B1-\u03C9\uAC00-\uD7A3\u3131-\u318E]+)/g;let m;
   while((m=re.exec(str))){if(m[1]){const w=m[1];runs.push({s:w,k:(MT_FUNCS.has(w)||(script&&w.length>1))?'up':'it'});}else if(m[2])runs.push({s:m[2],k:'ko'});else runs.push({s:m[3],k:'up'});}return runs;}
 function mtFont(k,size,base){if(k==='it')return`italic ${size}px 'STIX Two Text','Times New Roman',serif`;if(k==='ko')return`${size}px ${base||"'Noto Sans KR',sans-serif"}`;return`${size}px 'STIX Two Text','Times New Roman',serif`;}
 function mtLayout(ctx,nodes,size,dy,script,base,acc){for(const n of nodes){if(n.t==='txt'){for(const r of mtRuns(n.v,script)){ctx.font=mtFont(r.k,size,base);const w=ctx.measureText(r.s).width;acc.push({s:r.s,font:ctx.font,dy,w});}}
+    else if(n.t==='sqrt'){ctx.font=`${size*1.05}px 'STIX Two Text','Times New Roman',serif`;const w=ctx.measureText('√').width;acc.push({s:'√',font:ctx.font,dy,w});const i0=acc.length;mtLayout(ctx,n.v,size,dy,script,base,acc);
+      let iw=0;for(let j=i0;j<acc.length;j++)iw+=acc[j].w;acc.push({s:'',font:ctx.font,dy,w:0,bar:{w:iw,y:dy-size*.86}});}
     else{const sz=size*.76;mtLayout(ctx,n.v,sz,dy+(n.t==='sub'?size*.28:-size*.42),true,base,acc);}}return acc;}
 function mathText(ctx,str,x,y,opt){opt=opt||{};const m=/(\d+(?:\.\d+)?)px/.exec(opt.font||ctx.font);const size=opt.size||(m?+m[1]:12);const base=/Noto Sans KR/.test(opt.font||ctx.font)?"'Noto Sans KR',sans-serif":null;
   ctx.save();const pieces=mtLayout(ctx,mtParse(String(str)),size,0,false,base,[]);const W=pieces.reduce((a,p)=>a+p.w,0);const align=opt.align||ctx.textAlign;let x0=x;
   if(align==='center')x0=x-W/2;else if(align==='right'||align==='end')x0=x-W;const bl=opt.baseline||ctx.textBaseline;let y0=y;if(bl==='middle')y0=y+size*.35;else if(bl==='top'||bl==='hanging')y0=y+size*.8;else if(bl==='bottom')y0=y-size*.2;
   ctx.textAlign='left';ctx.textBaseline='alphabetic';const fill=opt.color||ctx.fillStyle;
   if(opt.halo!==false){ctx.strokeStyle=C.panel;ctx.lineWidth=opt.haloW||4;ctx.lineJoin='round';let xx=x0;for(const p of pieces){ctx.font=p.font;ctx.strokeText(p.s,xx,y0+p.dy);xx+=p.w;}}
-  ctx.fillStyle=fill;const FT=CanvasRenderingContext2D.prototype.fillText;let xx=x0;for(const p of pieces){ctx.font=p.font;FT.call(ctx,p.s,xx,y0+p.dy);xx+=p.w;}ctx.restore();return W;}
+  ctx.fillStyle=fill;ctx.strokeStyle=fill;const FT=CanvasRenderingContext2D.prototype.fillText;let xx=x0;for(const p of pieces){ctx.font=p.font;if(p.bar){ctx.lineWidth=Math.max(1,size/14);ctx.beginPath();ctx.moveTo(xx-p.bar.w-1,y0+p.bar.y);ctx.lineTo(xx+1,y0+p.bar.y);ctx.stroke();}else FT.call(ctx,p.s,xx,y0+p.dy);xx+=p.w;}ctx.restore();return W;}
 
 /* plot with optional log axes.
    o: {xr,yr,xlog,ylog,xl,yl,series:[{pts,col,lw,dash,dots,r,fill}],pre(c,X,Y,m),post(c,X,Y,m),xticks,yticks,margin} */
@@ -574,15 +583,18 @@ function drawGraph(cv,G,pos,opt){const F=fit(cv);if(!F)return;const{ctx:c,w,h}=F
 const TAU=2*Math.PI;
 function redrawOnTheme(fn){const re=()=>setTimeout(()=>{readTheme();fn();},0);matchMedia('(prefers-color-scheme: dark)').addEventListener('change',re);new MutationObserver(re).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});}
 
-/* ================= HERO: thin vs fat tail samples ================= */
-(function hero(){const cv=$('#hero');cv.style.aspectRatio='1/1';let seed=1,E=[],P=[];
+/* ================= HERO: distributions + samples ================= */
+(function hero(){const cv=$('#hero'),cp=$('#heroP');cv.style.aspectRatio='1.5/1';cp.style.aspectRatio='1.6/1';let seed=1,E=[],P=[];
   function gen(){const r=mulberry32(300+seed);E=[];P=[];for(let i=0;i<300;i++){E.push(-3*Math.log(1-r()));P.push(Math.pow(1-r(),-1/1.5));}}
-  function draw(){const F=fit(cv);if(!F)return;const{ctx:c,w,h}=F;c.clearRect(0,0,w,h);const mx=Math.max(...P,...E);const pad=14,top=24;const rowH=(h-top-2*pad)/2;
-    const row=(arr,y0,col,lab)=>{c.strokeStyle=rgba(C.muted,.4);c.beginPath();c.moveTo(pad,y0+rowH);c.lineTo(w-pad,y0+rowH);c.stroke();c.strokeStyle=col;c.lineWidth=1.6;
-      arr.forEach((v,i)=>{const x=pad+(i+.5)/arr.length*(w-2*pad);c.beginPath();c.moveTo(x,y0+rowH);c.lineTo(x,y0+rowH-v/mx*(rowH-6));c.stroke();});
-      c.fillStyle=C.ink;c.font="13px 'Noto Sans KR',sans-serif";c.textAlign='left';c.fillText(lab+', 최댓값 '+Math.max(...arr).toFixed(1),pad,y0+12);};
-    row(E,top,C.cyan,'지수함수 분포 (평균 3)');row(P,top+rowH+pad,C.pink,'거듭제곱 분포 γ = 2.5 (평균 3)');}
-  gen();new ResizeObserver(draw).observe(cv);cv.addEventListener('pointerdown',()=>{seed++;gen();draw();});redrawOnTheme(draw);})();
+  function drawP(){const xs=[];for(let i=0;i<=300;i++)xs.push(Math.pow(10,2.4*i/300));
+    plot(cp,{xr:[1,250],yr:[1e-7,1],xlog:true,ylog:true,xl:'x',yl:'p(x)',series:[{pts:xs.map(x=>[x,Math.exp(-x/3)/3]),col:C.cyan,lw:2.6},{pts:xs.map(x=>[x,1.5*Math.pow(x,-2.5)]),col:C.pink,lw:2.6}],
+      post:(c,X,Y)=>{c.font="13px 'Noto Sans KR',sans-serif";c.fillStyle=C.cyan;c.fillText('지수함수',X(1.3),Y(3e-6));c.fillStyle=C.pink;c.textAlign='right';c.fillText('거듭제곱',X(240),Y(.004));}});}
+  function draw(){const F=fit(cv);if(!F)return;const{ctx:c,w,h}=F;c.clearRect(0,0,w,h);const mx=Math.max(...P,...E);const padL=10,padR=10,lab=22,gap=10;const rowH=(h-2*lab-gap)/2;
+    const row=(arr,y0,col,txt)=>{c.fillStyle=col;c.font="13px 'Noto Sans KR',sans-serif";c.textAlign='left';c.textBaseline='alphabetic';c.fillText(txt+', 최댓값 '+Math.max(...arr).toFixed(1),padL,y0+15);
+      const base=y0+lab+rowH;c.strokeStyle=rgba(C.muted,.45);c.lineWidth=1;c.beginPath();c.moveTo(padL,base);c.lineTo(w-padR,base);c.stroke();c.strokeStyle=col;c.lineWidth=1.6;
+      arr.forEach((v,i)=>{const x=padL+(i+.5)/arr.length*(w-padL-padR);c.beginPath();c.moveTo(x,base);c.lineTo(x,base-v/mx*(rowH-4));c.stroke();});};
+    row(E,0,C.cyan,'지수함수 분포에서 뽑은 값');row(P,lab+rowH+gap,C.pink,'거듭제곱 분포에서 뽑은 값');}
+  gen();new ResizeObserver(()=>{draw();drawP();}).observe(cv);cv.addEventListener('pointerdown',()=>{seed++;gen();draw();});redrawOnTheme(()=>{draw();drawP();});})();
 
 /* ================= ultra-small world ================= */
 $('#us').style.aspectRatio='1.5/1';const US_N=[300,1000,3000,10000,30000];const US_T=[{g:2.2,col:'pink'},{g:2.6,col:'amber'},{g:3.5,col:'cyan'},{g:0,col:'ink'}];let usRes=US_T.map(()=>[]);
@@ -601,8 +613,22 @@ function graphical(seq){const d=seq.slice().sort((a,b)=>b-a);const n=d.length;if
   const S=new Float64Array(n+1);for(let i=n-1;i>=0;i--)S[i]=S[i+1]+d[i];let left=0,m=n;
   for(let r=1;r<=n;r++){left+=d[r-1];while(m>0&&d[m-1]<r)m--;const right=r*(r-1)+(m>r?r*(m-r)+S[m]:S[r]);if(left>right)return{ok:false,why:'r = '+r+'에서 Σd = '+left+' > '+right+'로 부등식이 깨집니다.'};}
   return{ok:true};}
-function egCheck(){const seq=$('#egIn').value.split(/[^0-9]+/).filter(x=>x!=='').map(Number);const v=$('#egV');if(!seq.length){v.className='verdict';v.textContent='링크수를 입력하세요.';return;}const R=graphical(seq);
-  if(R.ok){v.className='verdict ok';v.innerHTML='['+seq.join(', ')+']: 구현 가능합니다. 자기 연결과 중복 링크 없이 네트워크를 만들 수 있습니다.';}else{v.className='verdict no';v.innerHTML='['+seq.join(', ')+']: 구현할 수 없습니다. '+R.why;}}
+function realize(seq,r){const n=seq.length;const rem=seq.slice();const E=[];const has=new Set();const key=(a,b)=>a<b?a*n+b:b*n+a;
+  while(true){const idx=[...Array(n).keys()].filter(i=>rem[i]>0).sort((a,b)=>rem[b]-rem[a]||a-b);if(!idx.length)break;const v=idx[0],k=rem[v];rem[v]=0;const tg=idx.slice(1,1+k);if(tg.length<k)return null;for(const u of tg){rem[u]--;E.push([v,u]);has.add(key(v,u));}}
+  // randomize with degree-preserving double-edge swaps
+  for(let t=0;t<E.length*30;t++){const i=Math.floor(r()*E.length),j=Math.floor(r()*E.length);if(i===j)continue;let[a,b]=E[i],[c,d]=E[j];if(r()<.5)[c,d]=[d,c];if(a===d||c===b||a===c||b===d)continue;
+    if(has.has(key(a,d))||has.has(key(c,b)))continue;has.delete(key(a,b));has.delete(key(c,d));has.add(key(a,d));has.add(key(c,b));E[i]=[a,d];E[j]=[c,b];}
+  return E;}
+let egSeed=1;
+function egDrawEx(seq){const box=$('#egEx');if(!seq||seq.length>40){box.style.display=seq&&seq.length>40?'block':'none';if(seq&&seq.length>40){$('#egExNote').textContent='노드가 40개를 넘으면 그림은 생략합니다.';const F=fit($('#egC'));if(F)F.ctx.clearRect(0,0,F.w,F.h);}return;}
+  box.style.display='block';$('#egC').style.aspectRatio='1.6/1';const E=realize(seq,mulberry32(77+egSeed));const F=fit($('#egC'));if(!F||!E)return;const{ctx:c,w,h}=F;c.fillStyle=C.panel;c.fillRect(0,0,w,h);
+  const n=seq.length,R=Math.min(w,h)*.36,cx=w/2,cy=h/2;const P=i=>[cx+R*Math.cos(2*Math.PI*i/n-Math.PI/2),cy+R*Math.sin(2*Math.PI*i/n-Math.PI/2)];
+  c.strokeStyle=C.green;c.lineWidth=2;for(const[a,b]of E){const p=P(a),q=P(b);c.beginPath();c.moveTo(p[0],p[1]);c.lineTo(q[0],q[1]);c.stroke();}
+  for(let i=0;i<n;i++){const p=P(i);c.fillStyle=C.panel;c.strokeStyle=C.ink;c.lineWidth=2;c.beginPath();c.arc(p[0],p[1],n>15?6:9,0,7);c.fill();c.stroke();if(n<=15){const ang=2*Math.PI*i/n-Math.PI/2;c.fillStyle=C.ink;mathText(c,'k = '+seq[i],p[0]+Math.cos(ang)*28,p[1]+Math.sin(ang)*22+4,{align:'center',font:"italic 13px 'STIX Two Text',serif"});}}
+  $('#egExNote').textContent='링크 '+E.length+'개. 같은 링크수 목록으로 만들 수 있는 여러 구조 중 하나입니다.';}
+function egCheck(){const seq=$('#egIn').value.split(/[^0-9]+/).filter(x=>x!=='').map(Number);const v=$('#egV');if(!seq.length){v.className='verdict';v.textContent='링크수를 입력하세요.';egDrawEx(null);return;}const R=graphical(seq);
+  if(R.ok){v.className='verdict ok';v.innerHTML='['+seq.join(', ')+']: 구현 가능합니다. 자기 연결과 중복 링크 없이 네트워크를 만들 수 있습니다.';egDrawEx(seq);}else{v.className='verdict no';v.innerHTML='['+seq.join(', ')+']: 구현할 수 없습니다. '+R.why;egDrawEx(null);}}
+$('#egAgain').addEventListener('click',()=>{egSeed++;egCheck();});
 $('#egIn').addEventListener('input',egCheck);document.querySelectorAll('[data-eg]').forEach(b=>b.addEventListener('click',()=>{$('#egIn').value=b.dataset.eg.split(',').join(', ');egCheck();}));egCheck();
 let egG=1.8,egN=1000,egCurve=[];$('#egP').style.aspectRatio='2.2/1';
 function plSeq(N,g,r){const w=[];let s=0;for(let k=1;k<N;k++){const p=Math.pow(k,-g);w.push(p);s+=p;}const cum=new Float64Array(N-1);let a=0;for(let i=0;i<N-1;i++){a+=w[i]/s;cum[i]=a;}
@@ -616,23 +642,56 @@ let egTok=0;$('#egRun').addEventListener('click',()=>{const tok=++egTok;egCurve=
 $('#egG').addEventListener('input',e=>{egG=+e.target.value;$('#egGOut').textContent=egG.toFixed(2);egDraw();});$('#egN').addEventListener('change',e=>{egN=+e.target.value;egCurve=[];egDraw();});
 new ResizeObserver(egDraw).observe($('#egP'));
 
-/* ================= configuration model ================= */
-$('#cm').style.aspectRatio='1.3/1';$('#cmD').style.aspectRatio='2.4/1';let cmDeg=[],cmStubs=[],cmEdges=[],cmSeed=1;
-function cmSet(){const v=$('#cmSeq').value;if(v==='a')cmDeg=[2,2,2,1,1];else if(v==='b')cmDeg=[5,3,2,2,2,1,1,1,1];else{const r=mulberry32(40+cmSeed);const f=plSeq(9,2.3,r);cmDeg=[];let s=0;for(let i=0;i<12;i++){const k=f();cmDeg.push(k);s+=k;}if(s%2)cmDeg[0]++;}
+/* ================= configuration model: animated assembly ================= */
+$('#cm').style.aspectRatio='1.3/1';$('#cmD').style.aspectRatio='2.4/1';
+const CM={deg:[],pairs:[],t:0,target:0,playing:false,X:[],Y:[],VX:[],VY:[],view:{s:1,cx:0,cy:0,first:true},seed:1,last:performance.now(),vis:true};
+function cmSet(){const v=$('#cmSeq').value;const r=mulberry32(40+CM.seed);
+  if(v==='a')CM.deg=[2,2,2,1,1];else if(v==='b')CM.deg=[5,3,2,2,2,1,1,1,1];
+  else{const n=v==='c'?12:80;const f=plSeq(v==='c'?9:30,2.5,r);CM.deg=[];let s=0;for(let i=0;i<n;i++){const k=f();CM.deg.push(k);s+=k;}if(s%2)CM.deg[0]++;}
   cmReset();}
-function cmReset(){cmStubs=[];cmDeg.forEach((k,i)=>{for(let j=0;j<k;j++)cmStubs.push(i);});cmEdges=[];cmSeed++;cmDraw();}
-function cmStep(){if(cmStubs.length<2)return;const r=mulberry32(900+cmSeed*31+cmEdges.length);const a=cmStubs.splice(Math.floor(r()*cmStubs.length),1)[0];const b=cmStubs.splice(Math.floor(r()*cmStubs.length),1)[0];cmEdges.push([a,b]);cmDraw();}
-function cmDraw(){const F=fit($('#cm'));if(!F)return;const{ctx:c,w,h}=F;c.fillStyle=C.panel;c.fillRect(0,0,w,h);const n=cmDeg.length;const R=Math.min(w,h)*.36,cx=w/2,cy=h/2;const P=i=>[cx+R*Math.cos(TAU*i/n-Math.PI/2),cy+R*Math.sin(TAU*i/n-Math.PI/2)];
-  const seen=new Map();let self=0,multi=0;
-  for(const[a,b]of cmEdges){const key=Math.min(a,b)+'-'+Math.max(a,b);const m=(seen.get(key)||0);seen.set(key,m+1);const bad=a===b||m>0;if(a===b)self++;else if(m>0)multi++;
-    c.strokeStyle=bad?C.pink:C.green;c.lineWidth=bad?3:2.4;const p=P(a),q=P(b);c.beginPath();
-    if(a===b){const ang=Math.atan2(p[1]-cy,p[0]-cx);c.arc(p[0]+22*Math.cos(ang),p[1]+22*Math.sin(ang),16,0,7);}
-    else{c.moveTo(p[0],p[1]);const mx=(p[0]+q[0])/2,my=(p[1]+q[1])/2;const off=m*18;const dx=q[0]-p[0],dy=q[1]-p[1],L=Math.hypot(dx,dy)||1;c.quadraticCurveTo(mx-dy/L*off,my+dx/L*off,q[0],q[1]);}c.stroke();}
-  const left=new Array(n).fill(0);for(const s of cmStubs)left[s]++;
-  for(let i=0;i<n;i++){const p=P(i);const ang=Math.atan2(p[1]-cy,p[0]-cx);c.strokeStyle=C.ink;c.lineWidth=2.5;for(let j=0;j<left[i];j++){const a=ang+(j-(left[i]-1)/2)*.45;c.beginPath();c.moveTo(p[0],p[1]);c.lineTo(p[0]+26*Math.cos(a),p[1]+26*Math.sin(a));c.stroke();}
-    c.fillStyle=C.panel;c.strokeStyle=C.ink;c.lineWidth=2.5;c.beginPath();c.arc(p[0],p[1],10,0,7);c.fill();c.stroke();c.fillStyle=C.ink;c.font="italic 12px 'STIX Two Text',serif";c.textAlign='center';c.fillText('k='+cmDeg[i],p[0]+(p[0]-cx)*.28,p[1]+(p[1]-cy)*.28+4);}
-  $('#cmRead').innerHTML='<span>남은 미연결 링크 <b>'+cmStubs.length+'</b>개</span><span>만든 링크 '+cmEdges.length+'개</span><span>자기 연결 <b>'+self+'</b>, 다중 링크 <b>'+multi+'</b></span>';}
-$('#cmSeq').addEventListener('change',cmSet);$('#cmStep').addEventListener('click',cmStep);$('#cmAll').addEventListener('click',()=>{while(cmStubs.length>=2)cmStep();});$('#cmReset').addEventListener('click',cmReset);
+function cmReset(){CM.seed++;const r=mulberry32(900+CM.seed*31);const stubs=[];CM.deg.forEach((k,i)=>{for(let j=0;j<k;j++)stubs.push(i);});
+  for(let i=stubs.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[stubs[i],stubs[j]]=[stubs[j],stubs[i]];}
+  CM.pairs=[];for(let i=0;i+1<stubs.length;i+=2)CM.pairs.push([stubs[i],stubs[i+1]]);
+  const n=CM.deg.length;CM.X=[];CM.Y=[];CM.VX=new Array(n).fill(0);CM.VY=new Array(n).fill(0);const R=Math.max(2.2,Math.sqrt(n)*.8);
+  for(let i=0;i<n;i++){const a=2*Math.PI*i/n-Math.PI/2;CM.X.push(R*Math.cos(a));CM.Y.push(R*Math.sin(a));}
+  CM.t=0;CM.target=0;CM.view.first=true;if(CM.playing&&reduceMotion){CM.t=CM.target=CM.pairs.length;}cmLayout(60);cmDraw();}
+function cmLayout(it){const n=CM.deg.length;const X=CM.X,Y=CM.Y;for(let s=0;s<(it||1);s++){const fx=new Float64Array(n),fy=new Float64Array(n);
+  for(let i=0;i<n;i++)for(let j=i+1;j<n;j++){let dx=X[i]-X[j],dy=Y[i]-Y[j],d2=dx*dx+dy*dy;if(d2<1e-4){dx=.01;dy=.01;d2=2e-4;}const f=(n>20?.35:.9)/d2;fx[i]+=dx*f;fy[i]+=dy*f;fx[j]-=dx*f;fy[j]-=dy*f;}
+  const tE=Math.floor(CM.t);for(let e=0;e<tE;e++){const[u,v]=CM.pairs[e];if(u===v)continue;const dx=X[v]-X[u],dy=Y[v]-Y[u],d=Math.hypot(dx,dy)||.01;const f=.08*(d-1.4)/d;fx[u]+=dx*f;fy[u]+=dy*f;fx[v]-=dx*f;fy[v]-=dy*f;}
+  for(let i=0;i<n;i++){fx[i]-=X[i]*.02;fy[i]-=Y[i]*.02;CM.VX[i]=(CM.VX[i]+fx[i])*.5;CM.VY[i]=(CM.VY[i]+fy[i])*.5;const sp=Math.hypot(CM.VX[i],CM.VY[i]);if(sp>.25){CM.VX[i]*=.25/sp;CM.VY[i]*=.25/sp;}X[i]+=CM.VX[i];Y[i]+=CM.VY[i];}}}
+function cmDraw(){const F=fit($('#cm'));if(!F)return;const{ctx:c,w,h}=F;c.fillStyle=C.panel;c.fillRect(0,0,w,h);const n=CM.deg.length,X=CM.X,Y=CM.Y,V=CM.view;
+  let x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;for(let i=0;i<n;i++){x0=Math.min(x0,X[i]);x1=Math.max(x1,X[i]);y0=Math.min(y0,Y[i]);y1=Math.max(y1,Y[i]);}
+  const ts=Math.min((w-90)/Math.max(3,x1-x0),(h-90)/Math.max(3,y1-y0));const kk=V.first?1:.1;V.first=false;V.s+=(ts-V.s)*kk;V.cx+=((x0+x1)/2-V.cx)*kk;V.cy+=((y0+y1)/2-V.cy)*kk;
+  const SX=x=>w/2+(x-V.cx)*V.s,SY=y=>h/2+(y-V.cy)*V.s;const big=n>20;const rad=i=>(big?2.4:5)+(big?1.1:1.6)*Math.sqrt(CM.deg[i]);
+  const tE=Math.floor(CM.t),frac=CM.t-tE,used=new Array(n).fill(0),seen=new Map();let self=0,multi=0;
+  for(let e=0;e<tE;e++){const[a,b]=CM.pairs[e];used[a]++;used[b]++;const key=Math.min(a,b)+'-'+Math.max(a,b);const m=seen.get(key)||0;seen.set(key,m+1);const bad=a===b||m>0;if(a===b)self++;else if(m>0)multi++;
+    c.strokeStyle=bad?C.pink:rgba(C.muted,.85);c.lineWidth=bad?2.6:(big?1:2);const p=[SX(X[a]),SY(Y[a])],q=[SX(X[b]),SY(Y[b])];c.beginPath();
+    if(a===b){const ang=Math.atan2(p[1]-h/2,p[0]-w/2);const rr=rad(a)+(big?7:12);c.arc(p[0]+rr*Math.cos(ang),p[1]+rr*Math.sin(ang),rr*.85,0,7);}
+    else{c.moveTo(p[0],p[1]);const mx=(p[0]+q[0])/2,my=(p[1]+q[1])/2,dx=q[0]-p[0],dy=q[1]-p[1],L=Math.hypot(dx,dy)||1,off=m*18;c.quadraticCurveTo(mx-dy/L*off,my+dx/L*off,q[0],q[1]);}c.stroke();}
+  const act=tE<CM.pairs.length?CM.pairs[tE]:null;
+  // dangling stubs
+  c.strokeStyle=C.cyan;c.fillStyle=C.cyan;c.lineWidth=big?1.3:2.2;
+  for(let i=0;i<n;i++){let left=CM.deg[i]-used[i];if(act){if(act[0]===i)left--;if(act[1]===i)left--;}if(left<=0)continue;const x=SX(X[i]),y=SY(Y[i]),len=rad(i)+(big?7:16);
+    for(let j=0;j<left;j++){const a=i*2.39996+(j+used[i])*2*Math.PI/CM.deg[i];const ex=x+Math.cos(a)*len,ey=y+Math.sin(a)*len;c.beginPath();c.moveTo(x,y);c.lineTo(ex,ey);c.stroke();c.beginPath();c.arc(ex,ey,big?1.5:2.6,0,7);c.fill();}}
+  if(act){const[u,v]=act,ax=SX(X[u]),ay=SY(Y[u]),bx=SX(X[v]),by=SY(Y[v]);const hh=Math.min(1,frac*1.15)/2;c.strokeStyle=C.amber;c.lineWidth=big?2.4:3.2;c.beginPath();
+    if(u===v){const ang=Math.atan2(ay-h/2,ax-w/2);const rr=rad(u)+(big?7:12);c.arc(ax+rr*Math.cos(ang),ay+rr*Math.sin(ang),rr*.85,ang+Math.PI-hh*2*Math.PI,ang+Math.PI+hh*2*Math.PI);}
+    else{c.moveTo(ax,ay);c.lineTo(ax+(bx-ax)*hh,ay+(by-ay)*hh);c.moveTo(bx,by);c.lineTo(bx+(ax-bx)*hh,by+(ay-by)*hh);}c.stroke();
+    [[ax,ay,u],[bx,by,v]].forEach(([px,py,i])=>{c.beginPath();c.arc(px,py,rad(i)+4,0,7);c.stroke();});}
+  const kmax=Math.max(...CM.deg),lk=Math.log(kmax+1),A=hexRGB(C.cyan),B=hexRGB(C.pink);
+  for(let i=0;i<n;i++){const tt=Math.pow(Math.log(CM.deg[i]+1)/lk,2);c.fillStyle='rgb('+[0,1,2].map(q=>Math.round(A[q]+(B[q]-A[q])*tt)).join(',')+')';c.beginPath();c.arc(SX(X[i]),SY(Y[i]),rad(i),0,7);c.fill();c.strokeStyle=C.panel;c.lineWidth=1.2;c.stroke();
+    if(!big){c.fillStyle=C.ink;c.font="italic 13px 'STIX Two Text',serif";c.textAlign='center';const ang=Math.atan2(SY(Y[i])-h/2,SX(X[i])-w/2);mathText(c,'k = '+CM.deg[i],SX(X[i])+Math.cos(ang)*(rad(i)+30),SY(Y[i])+Math.sin(ang)*(rad(i)+30)+4,{align:'center'});}}
+  const stubsLeft=CM.deg.reduce((a,k)=>a+k,0)-2*tE;
+  $('#cmRead').innerHTML='<span>남은 미연결 링크 <b>'+stubsLeft+'</b>개</span><span>만든 링크 '+tE+' / '+CM.pairs.length+'개</span><span>자기 연결 <b>'+self+'</b>, 다중 링크 <b>'+multi+'</b></span>';}
+function cmFrame(now){requestAnimationFrame(cmFrame);const dt=Math.min(.05,(now-CM.last)/1000);CM.last=now;if(!CM.vis)return;const P=CM.pairs.length;const rate=CM.deg.length>20?Math.max(6,P/12):1.4;
+  if(CM.playing){CM.target=P;}const moving=CM.t<CM.target;if(moving)CM.t=Math.min(CM.target,CM.t+dt*(CM.playing?rate:1.6));
+  if(CM.playing&&CM.t>=P){CM.playing=false;$('#cmPlay').textContent='자동 조립';}
+  cmLayout(1);cmDraw();}
+new IntersectionObserver(es=>{CM.vis=es[0].isIntersecting;}).observe($('#cm'));
+$('#cmSeq').addEventListener('change',cmSet);
+$('#cmPlay').addEventListener('click',()=>{if(CM.t>=CM.pairs.length)cmReset();CM.playing=!CM.playing;$('#cmPlay').textContent=CM.playing?'일시 정지':'자동 조립';if(!CM.playing)CM.target=Math.ceil(CM.t);if(reduceMotion&&CM.playing){CM.t=CM.target=CM.pairs.length;CM.playing=false;$('#cmPlay').textContent='자동 조립';}});
+$('#cmStep').addEventListener('click',()=>{CM.playing=false;$('#cmPlay').textContent='자동 조립';CM.target=Math.min(CM.pairs.length,Math.floor(CM.target)+1);if(reduceMotion)CM.t=CM.target;});
+$('#cmReset').addEventListener('click',cmSet);
+requestAnimationFrame(cmFrame);
 let cmDraws=[];const DK=(()=>{const g=2.5;const w=[];let s=0;for(let k=1;k<=200;k++){const p=Math.pow(k,-g);w.push(p);s+=p;}const D=[];let acc=1;for(let k=1;k<=200;k++){D.push([k,acc]);acc-=w[k-1]/s;}return D;})();
 function cmDDraw(){const st=[];for(const[k,v]of DK){if(k>40)break;st.push([k,v]);st.push([k+1,v]);}
   plot($('#cmD'),{xr:[1,41],yr:[0,1.02],xlog:true,xl:'k',yl:'D(k)',series:[{pts:st,col:C.pink,lw:2}],
@@ -681,8 +740,9 @@ new ResizeObserver(hDraw).observe($('#hp'));setTimeout(hBuild,50);
 /* ================= tails ================= */
 let tM='log';$('#tl').style.aspectRatio='1.5/1';
 function tDraw(){const f=[[x=>Math.exp(-x),C.pink],[x=>Math.exp(-x*x),C.green],[x=>Math.pow(x,-2),C.cyan]];let o;
-  if(tM==='lin'){o={xr:[0,6],yr:[0,1],xl:'x',yl:'y'};o.series=f.map(([fn,col])=>{const p=[];for(let i=1;i<=300;i++){const x=6*i/300;p.push([x,Math.min(1.2,fn(x))]);}return{pts:p,col,lw:2.4};});}
-  else if(tM==='semi'){o={xr:[0,6],yr:[.01,1],ylog:true,xl:'x',yl:'y'};o.series=f.map(([fn,col])=>{const p=[];for(let i=1;i<=300;i++){const x=6*i/300;p.push([x,Math.min(1,fn(x))]);}return{pts:p,col,lw:2.4};});}
+  const pts=(fn,lin,k)=>{const p=[];for(let i=0;i<=300;i++){const x=6*i/300;if(k===2&&x<1)continue;p.push([x,fn(x)]);}return p;};
+  if(tM==='lin'){o={xr:[0,6],yr:[0,1],xl:'x',yl:'y'};o.series=f.map(([fn,col],k)=>({pts:pts(fn,true,k),col,lw:2.4}));}
+  else if(tM==='semi'){o={xr:[0,6],yr:[.01,1],ylog:true,xl:'x',yl:'y'};o.series=f.map(([fn,col],k)=>({pts:pts(fn,false,k),col,lw:2.4}));}
   else{o={xr:[1,10],yr:[.01,1],xlog:true,ylog:true,xl:'x',yl:'y'};o.series=f.map(([fn,col])=>{const p=[];for(let i=0;i<=300;i++){const x=Math.pow(10,i/300);p.push([x,fn(x)]);}return{pts:p,col,lw:2.4};});}
   plot($('#tl'),o);}
 document.querySelectorAll('.seg[aria-label="꼬리 비교 축 척도"] button').forEach(b=>b.addEventListener('click',()=>{tM=b.dataset.m;document.querySelectorAll('.seg[aria-label="꼬리 비교 축 척도"] button').forEach(c=>c.setAttribute('aria-pressed',c===b));tDraw();}));
@@ -706,7 +766,7 @@ document.querySelectorAll('.seg[aria-label="혼합된 분포 종류"] button').f
 cxCtl();new ResizeObserver(cxDraw).observe($('#cx'));
 
 /* ---------- theme ---------- */
-redrawOnTheme(()=>{usDraw();egDraw();cmDraw();cmDDraw();swDraw();hDraw();tDraw();cxDraw();});
+redrawOnTheme(()=>{usDraw();egDraw();egCheck();cmDraw();cmDDraw();swDraw();hDraw();tDraw();cxDraw();});
 document.fonts&&document.fonts.ready.then(()=>{usDraw();egDraw();cmDraw();cmDDraw();swDraw();hDraw();tDraw();cxDraw();});
 })();
 </script>

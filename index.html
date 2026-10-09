@@ -37,7 +37,19 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);f
 a{color:var(--cyan)}
 :focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:center;padding:28px 0 40px}
+.hero{padding:28px 0 40px}
+.hero > div{max-width:48rem}
+.cm-figure{margin:32px 0 0}
+.panels{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:28px}
+.panel p{font-size:.86rem;color:var(--muted);margin:8px 0 0;line-height:1.6}
+#netView{display:block;width:100%;aspect-ratio:3/2}
+#degView{display:block;width:100%;aspect-ratio:1/1}
+.c-node{color:var(--cyan);font-weight:500}
+.c-hi{color:var(--amber);font-weight:500}
+.cm-controls{display:flex;gap:8px;margin-top:12px}
+.btn{border:1px solid var(--ink);border-radius:6px;background:transparent;color:var(--ink);font:inherit;font-size:.9rem;padding:5px 14px;cursor:pointer}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.cm-figure figcaption{font-size:.84rem;color:var(--muted);margin-top:10px;max-width:60em;line-height:1.6}
 .kicker{color:var(--muted);margin:0 0 12px;font-size:.95rem}
 h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.18;margin:0;letter-spacing:-.01em}
 h1 .en{display:block;font-family:var(--math);font-style:italic;font-weight:400;font-size:.48em;color:var(--muted);margin-top:12px;letter-spacing:0}
@@ -73,8 +85,7 @@ footer{border-top:1px solid var(--rule);padding:22px 0 44px;font-size:.88rem;col
 footer p{margin:0 0 6px;max-width:60em}
 footer strong{color:var(--ink);font-weight:500}
 @media (max-width:820px){
-  .hero{grid-template-columns:1fr;padding-top:28px;gap:16px}
-  .fig{order:-1;max-width:340px;margin:0 auto}
+  .panels{grid-template-columns:1fr}
   .howto{grid-template-columns:1fr;gap:14px}
   .lesson{grid-template-columns:3rem minmax(0,1fr)}
   .lesson .go{grid-column:2;justify-self:start;margin-top:8px}
@@ -103,9 +114,22 @@ footer strong{color:var(--ink);font-weight:500}
     <p class="lead">허브는 왜 생기고, “척도가 없다”는 것은 무슨 뜻일까? 『네트워크 사이언스』 4장 「척도 없는 성질」과 『네트워크 분석』 3장 「허브」의 내용을 네트워크를 직접 만들고 링크수 분포를 그려 보며 따라가는 웹 데모 모음입니다. 설치 없이 브라우저에서 바로 실행됩니다.</p>
     <p class="credit">이 데모는 <strong>Claude Opus 5.5</strong>가 제작했으며, <strong>경상국립대학교 물리학과 <a href="https://sites.google.com/view/netscilab/principal-investigator" target="_blank" rel="noopener">이상훈</a> 교수</strong>의 강의자료(<a href="https://www.complexity.kr/?p=1268" target="_blank" rel="noopener">2024 복잡계 여름학교</a>, ‘거듭제곱 법칙과 척도 없는 네트워크’ 강의)를 기반으로 합니다.</p>
   </div>
-  <figure class="fig" style="margin:0">
-    <svg viewBox="0 0 400 380" role="img" aria-label="로그-로그 척도에서 직선인 거듭제곱 분포와 급격히 꺾이는 푸아송 분포"><line class="ax" x1="40.0" y1="20" x2="40.0" y2="360"/><line class="ax" x1="153.3" y1="20" x2="153.3" y2="360"/><line class="ax" x1="266.7" y1="20" x2="266.7" y2="360"/><line class="ax" x1="380.0" y1="20" x2="380.0" y2="360"/><line class="ax" x1="40" y1="20.0" x2="380" y2="20.0"/><line class="ax" x1="40" y1="105.0" x2="380" y2="105.0"/><line class="ax" x1="40" y1="190.0" x2="380" y2="190.0"/><line class="ax" x1="40" y1="275.0" x2="380" y2="275.0"/><line class="ax" x1="40" y1="360.0" x2="380" y2="360.0"/><polyline class="g" points="40.0,97.7 74.1,77.4 94.1,64.6 108.2,57.1 119.2,53.8 128.2,53.8 135.8,56.6 142.4,61.9 148.1,69.4 153.3,78.8 158.0,90.0 162.3,102.8 166.2,117.1 169.9,132.7 173.3,149.6 176.5,167.7 179.5,187.0 182.3,207.2 184.9,228.5 187.5,250.7 189.9,273.8 192.1,297.8 194.3,322.6 196.4,348.2"/><polyline class="lc" points="40.0,25.4 43.4,28.6 46.8,31.8 50.2,35.0 53.6,38.2 57.0,41.4 60.4,44.5 63.8,47.7 67.2,50.9 70.6,54.1 74.0,57.3 77.4,60.5 80.8,63.7 84.2,66.9 87.6,70.0 91.0,73.2 94.4,76.4 97.8,79.6 101.2,82.8 104.6,86.0 108.0,89.2 111.4,92.4 114.8,95.5 118.2,98.7 121.6,101.9 125.0,105.1 128.4,108.3 131.8,111.5 135.2,114.7 138.6,117.9 142.0,121.0 145.4,124.2 148.8,127.4 152.2,130.6 155.6,133.8 159.0,137.0 162.4,140.2 165.8,143.4 169.2,146.5 172.6,149.7 176.0,152.9 179.4,156.1 182.8,159.3 186.2,162.5 189.6,165.7 193.0,168.9 196.4,172.0 199.8,175.2 203.2,178.4 206.6,181.6 210.0,184.8 213.4,188.0 216.8,191.2 220.2,194.4 223.6,197.5 227.0,200.7 230.4,203.9 233.8,207.1 237.2,210.3 240.6,213.5 244.0,216.7 247.4,219.9 250.8,223.0 254.2,226.2 257.6,229.4 261.0,232.6 264.4,235.8 267.8,239.0 271.2,242.2 274.6,245.4 278.0,248.5 281.4,251.7 284.8,254.9 288.2,258.1 291.6,261.3 295.0,264.5 298.4,267.7 301.8,270.9 305.2,274.0 308.6,277.2 312.0,280.4 315.4,283.6 318.8,286.8 322.2,290.0 325.6,293.2 329.0,296.4 332.4,299.5 335.8,302.7 339.2,305.9 342.6,309.1 346.0,312.3 349.4,315.5 352.8,318.7 356.2,321.9 359.6,325.0 363.0,328.2 366.4,331.4 369.8,334.6 373.2,337.8 376.6,341.0 380.0,344.2"/></svg>
-    <figcaption>로그-로그 척도에서 거듭제곱 분포(<span class="m"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mrow><mo>−</mo><mn>2.5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">k^{-2.5}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">2.5</span></span></span></span></span></span></span></span></span></span></span></span></span>)는 직선이고, 평균이 6인 푸아송 분포는 급격히 꺾여 떨어집니다.</figcaption>
+  <figure class="cm-figure">
+    <div class="panels">
+      <div class="panel">
+        <canvas id="netView" aria-label="미연결 링크를 한 쌍씩 이어 조립되는 구조 모형 네트워크"></canvas>
+        <p>구조 모형(configuration model)을 미연결 링크(stub)부터 하나씩 조립하는 모습. 각 노드는 거듭제곱 분포에서 뽑은 개수의 <span class="c-node">미연결 링크</span>를 가지고 시작하고, 무작위로 고른 한 쌍이 차례로 <span class="c-hi">이어져</span> 링크가 됩니다. 자기 연결이나 다중 링크를 만드는 쌍은 버리고 다시 고르므로 결과는 단순 그래프입니다. 노드의 크기와 색은 목표 링크수를 나타냅니다.</p>
+      </div>
+      <div class="panel">
+        <canvas id="degView" aria-label="링크수 분포: 목표 링크수 열, 지금까지 만든 링크로 센 링크수, 뽑은 분포"></canvas>
+        <p>링크수 분포(로그 묶기, 로그-로그 척도): 목표 링크수 열(빈 원), 지금까지 만든 링크로 센 링크수(점), 링크수를 뽑은 거듭제곱 분포 <span class="m"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>k</mi></msub><mo>∝</mo><msup><mi>k</mi><mrow><mo>−</mo><mi>γ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">p_{k} \propto k^{-\gamma }</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∝</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7713em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7713em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.05556em;">γ</span></span></span></span></span></span></span></span></span></span></span></span></span>(점선).</p>
+      </div>
+    </div>
+    <div class="cm-controls">
+      <button class="btn" id="cmToggle" type="button">일시 정지</button>
+      <button class="btn" id="cmRestart" type="button">새로 조립하기</button>
+    </div>
+    <figcaption>링크수는 순수한 거듭제곱 분포 <span class="m"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>k</mi></msub><mo>∝</mo><msup><mi>k</mi><mrow><mo>−</mo><mi>γ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">p_{k} \propto k^{-\gamma }</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∝</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7713em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7713em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.05556em;">γ</span></span></span></span></span></span></span></span></span></span></span></span></span>(<span class="m"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>≤</mo><mi>k</mi><mo>≤</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">2 \le k \le 40</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">40</span></span></span></span></span>)에서 뽑습니다. 링크수 지수 <span class="m"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><mn>2.89</mn></mrow><annotation encoding="application/x-tex">\gamma = 2.89</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2.89</span></span></span></span></span>는 효모(<i>Saccharomyces cerevisiae</i>) 단백질 상호작용 네트워크[Jeong, Mason, Barabási, and Oltvai 2001]에서 측정된 값입니다(『네트워크 사이언스』 표 4.1). <span class="m"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi></mrow></msub><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k_{\mathrm{min}} = 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">min</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span></span>로 두면 평균 링크수가 약 3.2로 실제 네트워크의 <span class="m"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">⟨</mo><mi>k</mi><mo stretchy="false">⟩</mo><mo>=</mo><mn>2.90</mn></mrow><annotation encoding="application/x-tex">\langle k\rangle = 2.90</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⟨</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2.90</span></span></span></span></span>에 가깝고, <span class="m"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi></mrow></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k_{\mathrm{min}} = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">min</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span>로 두면 평균이 약 1.4로 작아져 네트워크가 잘게 쪼개집니다. 실제 네트워크의 연결 구조가 아니라, 같은 링크수 지수를 가진 구조 모형입니다.</figcaption>
   </figure>
 </header>
 
@@ -116,7 +140,6 @@ footer strong{color:var(--ink);font-weight:500}
       <span class="no">01</span>
       <div>
         <h3>거듭제곱 분포와 척도 없음</h3>
-        <p class="secs">강의자료 1~16쪽</p>
         <p>월드와이드웹과 허브, 무작위 네트워크와 척도 없는 네트워크의 링크수 분포 비교, 로그 척도에서의 직선, 척도 변환과 “척도 없음”의 의미, 프랙탈 차원, 이산적인 형식과 연속적인 형식의 정규화.</p>
       </div>
       <a class="go" href="01-power-law-scale-free.html">열기</a>
@@ -125,7 +148,6 @@ footer strong{color:var(--ink);font-weight:500}
       <span class="no">02</span>
       <div>
         <h3>허브와 모멘트</h3>
-        <p class="secs">강의자료 17~30쪽</p>
         <p>허브와 꼬리, 가장 큰 허브의 크기 k<sub>max</sub> ~ N<sup>1/(γ−1)</sup>와 ln N, 고속도로와 항공로, 링크수 분포의 모멘트와 발산, 실제 네트워크의 표준편차, 보편성.</p>
       </div>
       <a class="go" href="02-hubs-moments.html">열기</a>
@@ -134,7 +156,6 @@ footer strong{color:var(--ink);font-weight:500}
       <span class="no">03</span>
       <div>
         <h3>링크수 분포 그리기와 지수 측정</h3>
-        <p class="secs">강의자료 31~48쪽</p>
         <p>선형 묶기, 로그 묶기, 누적 분포, 등수 그림, 최소제곱법과 최대우도추정, 콜모고로프-스미르노프 거리, 적합도 검정과 p-값, “척도 없는 네트워크는 드물다” 논쟁.</p>
       </div>
       <a class="go" href="03-plotting-fitting.html">열기</a>
@@ -143,7 +164,6 @@ footer strong{color:var(--ink);font-weight:500}
       <span class="no">04</span>
       <div>
         <h3>네트워크 만들기와 꼬리의 종류</h3>
-        <p class="secs">강의자료 49~72쪽</p>
         <p>극단적인 좁은 세상, 링크수 지수의 역할과 에르되시-갈라이 정리, 구조 모형, 이웃 수 보존 무작위화, 숨은 매개변수 모형, 두꺼운 꼬리와 얇은 꼬리, 혼합된 분포.</p>
       </div>
       <a class="go" href="04-networks-tails.html">열기</a>
@@ -154,7 +174,6 @@ footer strong{color:var(--ink);font-weight:500}
       <span class="no">02</span>
       <div>
         <h3>제목</h3>
-        <p class="secs">강의자료 x~y쪽</p>
         <p>한두 문장 설명.</p>
       </div>
       <a class="go" href="02-파일이름.html">열기</a>
@@ -168,7 +187,7 @@ footer strong{color:var(--ink);font-weight:500}
   <div class="howto">
     <div><h3>네트워크 만들기</h3><p>네트워크를 새로 만들거나 매개변수를 바꾸면, 노드 배치와 링크수 분포가 브라우저에서 바로 다시 계산됩니다.</p></div>
     <div><h3>매개변수 바꾸기</h3><p>링크수 지수 γ, 평균 링크수 〈k〉 같은 매개변수를 슬라이더로 바꾸고, 축을 선형 척도와 로그 척도로 바꿔 가며 분포를 비교할 수 있습니다.</p></div>
-    <div><h3>글과 함께 읽기</h3><p>각 데모 옆의 설명은 강의자료의 흐름을 따릅니다. 중요한 용어에는 괄호 안에 영어 원어를 함께 적었습니다.</p></div>
+    <div><h3>글과 함께 읽기</h3><p>각 데모 옆의 설명은 강의의 흐름을 따릅니다. 중요한 용어에는 괄호 안에 영어 원어를 함께 적었습니다.</p></div>
   </div>
 </section>
 
@@ -177,6 +196,7 @@ footer strong{color:var(--ink);font-weight:500}
   <ol class="refs">
     <li>『<a href="https://www.acornpub.co.kr/product/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%82%AC%EC%9D%B4%EC%96%B8%EC%8A%A4/5911/category/25/display/1/" target="_blank" rel="noopener">네트워크 사이언스</a>』 (에이콘출판사, 2023), <a href="https://scholar.google.com/citations?user=YtV_KAgAAAAJ" target="_blank" rel="noopener">이미진</a>·<a href="https://scholar.google.com/citations?user=F_tGTBYAAAAJ" target="_blank" rel="noopener">윤진혁</a>·<a href="https://sites.google.com/view/netscilab/principal-investigator" target="_blank" rel="noopener">이상훈</a>·<a href="https://scholar.google.com/citations?user=kXggWVUAAAAJ" target="_blank" rel="noopener">이은</a>·<a href="https://scholar.google.com/citations?user=EAxaIyYAAAAJ&amp;hl=en" target="_blank" rel="noopener">조항현</a>·<a href="https://scholar.google.dk/citations?user=52OfnhEAAAAJ" target="_blank" rel="noopener">김희태</a>·<a href="https://scholar.google.com/citations?user=GUpdvGoAAAAJ" target="_blank" rel="noopener">손승우</a> 옮김. 원서: <a href="https://scholar.google.com/citations?user=vsj2slIAAAAJ&amp;hl=en" target="_blank" rel="noopener">Albert-László Barabási</a>, <i><a href="https://networksciencebook.com/" target="_blank" rel="noopener">Network Science</a></i> (Cambridge University Press, 2016). 4장 「척도 없는 성질」.</li>
     <li>『<a href="https://www.acornpub.co.kr/product/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%B6%84%EC%84%9D/5797/category/25/display/1/" target="_blank" rel="noopener">네트워크 분석</a>』 (에이콘출판사, 2022), <a href="https://scholar.google.com/citations?user=GUpdvGoAAAAJ" target="_blank" rel="noopener">손승우</a>·<a href="https://scholar.google.com/citations?user=4nirJyUAAAAJ" target="_blank" rel="noopener">엄영호</a>·<a href="https://sites.google.com/view/netscilab/principal-investigator" target="_blank" rel="noopener">이상훈</a>·<a href="https://scholar.google.com/citations?user=kXggWVUAAAAJ" target="_blank" rel="noopener">이은</a>·<a href="https://scholar.google.dk/citations?user=52OfnhEAAAAJ" target="_blank" rel="noopener">김희태</a>·<a href="https://scholar.google.com/citations?user=YtV_KAgAAAAJ" target="_blank" rel="noopener">이미진</a> 옮김. 원서: <a href="https://scholar.google.com/citations?user=f_kGJwkAAAAJ" target="_blank" rel="noopener">Filippo Menczer</a>, <a href="https://scholar.google.com/citations?user=NDrCCokAAAAJ" target="_blank" rel="noopener">Santo Fortunato</a>, and <a href="https://scholar.google.com/citations?user=oZC6UJsAAAAJ" target="_blank" rel="noopener">Clayton A. Davis</a>, <i><a href="https://www.amazon.com/First-Course-Network-Science/dp/1108471137" target="_blank" rel="noopener">A First Course in Network Science</a></i> (Cambridge University Press, 2020). 3장 「허브」.</li>
+    <li>H. Jeong, S. P. Mason, A.-L. Barabási, and Z. N. Oltvai, “<a href="https://doi.org/10.1038/35075138" target="_blank" rel="noopener">Lethality and centrality in protein networks</a>,” <i>Nature</i> <b>411</b>, 41 (2001). 표지 그림의 예시 네트워크.</li>
   </ol>
 </section>
 
@@ -191,6 +211,206 @@ footer strong{color:var(--ink);font-weight:500}
 function cur(){return document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}
 function show(){var m=cur();b.textContent=lab[m];b.setAttribute('aria-label','화면 모드: '+(m==='dark'?'다크':'라이트')+'. 누르면 '+(m==='dark'?'라이트':'다크')+' 모드로 바뀝니다.');}
 b.addEventListener('click',function(){var m=cur()==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',m);try{localStorage.setItem('netsci-theme',m);}catch(e){}show();});show();})();
+
+</script>
+<script>/* cover.js-inline */
+(function () {
+  'use strict';
+  // Example: yeast protein interaction network (Network Science, Table 4.1): <k> = 2.90, gamma = 2.89.
+  // Scaled down to N nodes; degrees drawn from the pure power law p_k ∝ k^(-gamma), KMIN ≤ k ≤ KCAP (<k> ≈ 3.2).
+  const N = 200, GAMMA = 2.89, KSAT = 0, KMIN = 2, KCAP = 40;
+  const PK = (() => { const p = new Array(KCAP + 1).fill(0); let z = 0; for (let k = KMIN; k <= KCAP; k++) { p[k] = Math.pow(k + KSAT, -GAMMA); z += p[k]; } return p.map(q => q / z); })();
+  const CDF = (() => { const c = []; let a = 0; PK.forEach((q, k) => { a += q; c[k] = a; }); return c; })();
+  const ri = n => (Math.random() * n) | 0;
+  function sampleK() { const u = Math.random(); let k = KMIN; while (k < KCAP && CDF[k] < u) k++; return k; }
+
+  let deg0, edges, T = 0, t = 0, holdUntil = null, rejected = 0;
+  const X = new Float64Array(N), Y = new Float64Array(N), VX = new Float64Array(N), VY = new Float64Array(N);
+
+  // draw the degree sequence and match stubs at random, rejecting self-loops and multi-links
+  function sample() {
+    const d = new Int32Array(N); let s = 0;
+    for (let i = 0; i < N; i++) { d[i] = sampleK(); s += d[i]; }
+    if (s % 2) d[ri(N)]++;
+    const left = []; for (let i = 0; i < N; i++) for (let j = 0; j < d[i]; j++) left.push(i);
+    const has = new Set(); edges = []; rejected = 0;
+    while (left.length >= 2) {
+      let ok = false;
+      for (let tries = 0; tries < 200; tries++) {
+        const a = ri(left.length); let b = ri(left.length - 1); if (b >= a) b++;
+        const u = left[a], v = left[b];
+        if (u === v) { rejected++; continue; }
+        const key = u < v ? u * N + v : v * N + u;
+        if (has.has(key)) { rejected++; continue; }
+        has.add(key); edges.push([u, v]);
+        const hi = Math.max(a, b), lo = Math.min(a, b);
+        left[hi] = left[left.length - 1]; left.pop(); left[lo] = left[left.length - 1]; left.pop();
+        ok = true; break;
+      }
+      if (!ok) break;
+    }
+    deg0 = new Int32Array(N); for (const [u, v] of edges) { deg0[u]++; deg0[v]++; }
+    T = edges.length; t = 0; holdUntil = null;
+    const R = Math.sqrt(N) * 0.75;
+    for (let i = 0; i < N; i++) { const a = Math.random() * 2 * Math.PI, r = R * Math.sqrt(Math.random()); X[i] = Math.cos(a) * r; Y[i] = Math.sin(a) * r; VX[i] = VY[i] = 0; }
+    view.first = true;
+  }
+
+  function layout() {
+    const fx = new Float64Array(N), fy = new Float64Array(N);
+    for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) {
+      let dx = X[i] - X[j], dy = Y[i] - Y[j], d2 = dx * dx + dy * dy;
+      if (d2 > 36) continue; if (d2 < 1e-4) { dx = Math.random() - .5; dy = Math.random() - .5; d2 = .25; }
+      const f = .35 / d2; fx[i] += dx * f; fy[i] += dy * f; fx[j] -= dx * f; fy[j] -= dy * f;
+    }
+    const tE = Math.floor(t);
+    for (let e = 0; e < tE; e++) { const [u, v] = edges[e], dx = X[v] - X[u], dy = Y[v] - Y[u], d = Math.hypot(dx, dy) || .01; const f = .08 * (d - 1) / d; fx[u] += dx * f; fy[u] += dy * f; fx[v] -= dx * f; fy[v] -= dy * f; }
+    for (let i = 0; i < N; i++) {
+      fx[i] -= X[i] * .012; fy[i] -= Y[i] * .012;
+      VX[i] = (VX[i] + fx[i]) * .55; VY[i] = (VY[i] + fy[i]) * .55;
+      const s = Math.hypot(VX[i], VY[i]); if (s > .4) { VX[i] *= .4 / s; VY[i] *= .4 / s; }
+      X[i] += VX[i]; Y[i] += VY[i];
+    }
+  }
+
+  // ---------- colors ----------
+  let K = {};
+  const hex = h => { h = h.trim().replace('#', ''); if (h.length === 3) h = h.split('').map(c => c + c).join(''); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); };
+  function readColors() {
+    const cs = getComputedStyle(document.documentElement), g = n => cs.getPropertyValue(n).trim();
+    K = { ink: g('--ink'), muted: g('--muted'), node: g('--cyan'), hub: g('--pink'), hi: g('--amber'), paper: g('--paper'), rule: g('--rule') };
+    K.nodeRGB = hex(K.node); K.hubRGB = hex(K.hub);
+  }
+  const SERIF = "'STIX Two Text','Times New Roman',serif", SANS = "'Noto Sans KR',sans-serif";
+
+  const net = document.getElementById('netView'), degc = document.getElementById('degView');
+  const nctx = net.getContext('2d'), dctx = degc.getContext('2d');
+  let NW = 0, NH = 0, DW = 0;
+  const view = { cx: 0, cy: 0, s: 30, first: true };
+  function resize() {
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    NW = net.clientWidth; NH = net.clientHeight; DW = degc.clientWidth;
+    net.width = Math.round(NW * dpr); net.height = Math.round(NH * dpr); degc.width = Math.round(DW * dpr); degc.height = Math.round(DW * dpr);
+    nctx.setTransform(dpr, 0, 0, dpr, 0, 0); dctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    view.first = true; draw();
+  }
+  function currentDegrees() { const d = new Int32Array(N), tE = Math.floor(t); for (let e = 0; e < tE; e++) { d[edges[e][0]]++; d[edges[e][1]]++; } return d; }
+
+  function drawNet() {
+    const ctx = nctx; ctx.clearRect(0, 0, NW, NH);
+    let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    for (let i = 0; i < N; i++) { x0 = Math.min(x0, X[i]); x1 = Math.max(x1, X[i]); y0 = Math.min(y0, Y[i]); y1 = Math.max(y1, Y[i]); }
+    const ts = Math.min((NW - 50) / Math.max(4, x1 - x0), (NH - 60) / Math.max(4, y1 - y0));
+    const k = view.first ? 1 : .08; view.first = false;
+    view.s += (ts - view.s) * k; view.cx += ((x0 + x1) / 2 - view.cx) * k; view.cy += ((y0 + y1) / 2 - view.cy) * k;
+    const SX = x => NW / 2 + (x - view.cx) * view.s, SY = y => NH / 2 + 12 + (y - view.cy) * view.s;
+    const tE = Math.floor(t), cur = currentDegrees(), building = tE < T;
+    let kmax = 1; for (let i = 0; i < N; i++) kmax = Math.max(kmax, deg0[i]);
+    const base = Math.max(1.6, Math.min(3, view.s * .1)), rad = i => base * (.9 + .42 * Math.sqrt(deg0[i]));
+
+    ctx.strokeStyle = K.muted; ctx.globalAlpha = .55; ctx.lineWidth = 1; ctx.beginPath();
+    for (let e = 0; e < tE; e++) { const [u, v] = edges[e]; ctx.moveTo(SX(X[u]), SY(Y[u])); ctx.lineTo(SX(X[v]), SY(Y[v])); }
+    ctx.stroke(); ctx.globalAlpha = 1;
+
+    let stubsLeft = 0; const fe = building ? edges[tE] : null, frac = t - tE;
+    if (building) {
+      ctx.strokeStyle = K.node; ctx.fillStyle = K.node; ctx.lineWidth = 1.3;
+      for (let i = 0; i < N; i++) {
+        let left = deg0[i] - cur[i]; if (fe && (fe[0] === i || fe[1] === i)) left--;
+        if (left <= 0) continue; stubsLeft += left;
+        const x = SX(X[i]), y = SY(Y[i]), len = rad(i) + Math.max(5, base * 2.6);
+        for (let j = 0; j < left; j++) {
+          const a = i * 2.39996 + (j + deg0[i] - left) * 2 * Math.PI / deg0[i], ex = x + Math.cos(a) * len, ey = y + Math.sin(a) * len;
+          ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(ex, ey); ctx.stroke(); ctx.beginPath(); ctx.arc(ex, ey, 1.5, 0, 2 * Math.PI); ctx.fill();
+        }
+      }
+    }
+    if (fe) {
+      stubsLeft += 2;
+      const [u, v] = fe, ax = SX(X[u]), ay = SY(Y[u]), bx = SX(X[v]), by = SY(Y[v]), h = Math.min(1, frac * 1.25) / 2;
+      ctx.strokeStyle = K.hi; ctx.lineWidth = 2.6; ctx.beginPath();
+      ctx.moveTo(ax, ay); ctx.lineTo(ax + (bx - ax) * h, ay + (by - ay) * h); ctx.moveTo(bx, by); ctx.lineTo(bx + (ax - bx) * h, by + (ay - by) * h); ctx.stroke();
+      [[ax, ay, u], [bx, by, v]].forEach(([px, py, i]) => { ctx.beginPath(); ctx.arc(px, py, rad(i) + 3, 0, 2 * Math.PI); ctx.stroke(); });
+    }
+    const order = Array.from({ length: N }, (_, i) => i).sort((a, b) => deg0[a] - deg0[b]), lk = Math.log(kmax + 1);
+    for (const i of order) {
+      const tt = Math.pow(Math.log(deg0[i] + 1) / lk, 2), a = K.nodeRGB, b = K.hubRGB;
+      ctx.fillStyle = 'rgb(' + [0, 1, 2].map(q => Math.round(a[q] + (b[q] - a[q]) * tt)).join(',') + ')';
+      ctx.beginPath(); ctx.arc(SX(X[i]), SY(Y[i]), rad(i), 0, 2 * Math.PI); ctx.fill(); ctx.strokeStyle = K.paper; ctx.lineWidth = 1; ctx.stroke();
+    }
+    ctx.fillStyle = K.muted; ctx.font = '13px ' + SANS; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText('링크 ' + tE + ' / ' + T + (building ? ',  남은 미연결 링크 ' + stubsLeft : ',  단순 그래프 완성 (다시 고른 쌍 ' + rejected + '개)'), 4, 4);
+  }
+
+  // text with a raised exponent or lowered subscript: parts = [[text, 'n'|'sup'|'sub', italic]]
+  function rich(ctx, parts, x, y, size, align) {
+    const fonts = parts.map(([s, pos, it]) => (it ? 'italic ' : '') + Math.round(pos === 'n' ? size : size * .74) + 'px ' + SERIF);
+    let W = 0; parts.forEach((p, i) => { ctx.font = fonts[i]; W += ctx.measureText(p[0]).width; });
+    let xx = align === 'right' ? x - W : align === 'center' ? x - W / 2 : x;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    parts.forEach((p, i) => { ctx.font = fonts[i]; const dy = p[1] === 'sup' ? -size * .38 : p[1] === 'sub' ? size * .3 : 0; ctx.fillText(p[0], xx, y + dy); xx += ctx.measureText(p[0]).width; });
+  }
+
+  function drawDeg() {
+    const ctx = dctx, w = DW; ctx.clearRect(0, 0, w, w);
+    const L = 50, Rm = 12, Tp = 30, B = w - 46, Wd = w - L - Rm, H = B - Tp, yLo = 1e-4, xLo = 1, xHi = 50;
+    const X_ = k => L + Math.log(k / xLo) / Math.log(xHi / xLo) * Wd, Y_ = q => B - Math.log(Math.max(q, yLo) / yLo) / Math.log(1 / yLo) * H;
+    const cur = currentDegrees(); let kTop = KCAP; for (let i = 0; i < N; i++) kTop = Math.max(kTop, deg0[i] + 1);
+    const tgt = new Array(kTop + 1).fill(0), now = new Array(kTop + 1).fill(0);
+    for (let i = 0; i < N; i++) { tgt[deg0[i]]++; now[Math.min(kTop, cur[i])]++; }
+    ctx.strokeStyle = K.rule; ctx.lineWidth = 1;
+    [1, 2, 5, 10, 20, 50].forEach(k => { ctx.beginPath(); ctx.moveTo(X_(k), Tp); ctx.lineTo(X_(k), B); ctx.stroke(); });
+    [1, .1, .01, .001, .0001].forEach(q => { ctx.beginPath(); ctx.moveTo(L, Y_(q)); ctx.lineTo(L + Wd, Y_(q)); ctx.stroke(); });
+    ctx.strokeStyle = K.muted; ctx.beginPath(); ctx.moveTo(L, Tp - 6); ctx.lineTo(L, B); ctx.lineTo(L + Wd, B); ctx.stroke();
+    ctx.fillStyle = K.muted;
+    [1, 2, 5, 10, 20, 50].forEach(k => rich(ctx, [[String(k), 'n', false]], X_(k), B + 13, 12, 'center'));
+    [[1, '0'], [.1, '−1'], [.01, '−2'], [.001, '−3'], [.0001, '−4']].forEach(([q, e]) => rich(ctx, q === 1 ? [['1', 'n', false]] : [['10', 'n', false], [e, 'sup', false]], L - 7, Y_(q), 12, 'right'));
+    ctx.fillStyle = K.ink;
+    rich(ctx, [['k', 'n', true]], L + Wd / 2, B + 34, 15, 'center');
+    rich(ctx, [['p', 'n', true], ['k', 'sub', true]], L, Tp - 16, 15, 'left');
+    // distribution the degrees were drawn from (dashed)
+    ctx.strokeStyle = K.ink; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]); ctx.beginPath(); let st = false;
+    PK.forEach((q, k) => { if (k < 1 || q <= 0 || q < yLo) return; st ? ctx.lineTo(X_(k), Y_(q)) : ctx.moveTo(X_(k), Y_(q)); st = true; }); ctx.stroke(); ctx.setLineDash([]);
+    const edgesB = [1, 2, 3, 4, 6, 9, 14, 21, 32, 48];
+    const pts = hist => { const out = []; for (let b = 0; b + 1 < edgesB.length; b++) { const a = edgesB[b], z = edgesB[b + 1]; let n = 0; for (let k = a; k < z && k < hist.length; k++) n += hist[k]; if (n) out.push([Math.sqrt(a * (z - 1)) || a, n / (N * (z - a))]); } return out; };
+    ctx.strokeStyle = K.hub; ctx.lineWidth = 1.6; pts(tgt).forEach(([k, q]) => { ctx.beginPath(); ctx.arc(X_(k), Y_(q), 5.5, 0, 2 * Math.PI); ctx.stroke(); });
+    ctx.fillStyle = K.node; pts(now).forEach(([k, q]) => { ctx.beginPath(); ctx.arc(X_(k), Y_(q), 3.5, 0, 2 * Math.PI); ctx.fill(); });
+    // legend
+    const lx = L + Wd - 128; let ly = Tp + 8; ctx.font = '12px ' + SANS; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.strokeStyle = K.ink; ctx.setLineDash([6, 4]); ctx.beginPath(); ctx.moveTo(lx, ly); ctx.lineTo(lx + 18, ly); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = K.ink; ctx.fillText('뽑은 분포', lx + 26, ly); ly += 20;
+    ctx.strokeStyle = K.hub; ctx.beginPath(); ctx.arc(lx + 9, ly, 5, 0, 2 * Math.PI); ctx.stroke(); ctx.fillStyle = K.ink; ctx.fillText('목표 링크수', lx + 26, ly); ly += 20;
+    ctx.fillStyle = K.node; ctx.beginPath(); ctx.arc(lx + 9, ly, 3.5, 0, 2 * Math.PI); ctx.fill(); ctx.fillStyle = K.ink; ctx.fillText('지금까지 연결', lx + 26, ly);
+  }
+  function draw() { if (!K.node || !edges || !NW) return; drawNet(); drawDeg(); }
+
+  // ---------- animation ----------
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let running = !reduceMotion, last = performance.now(), visible = true;
+  const toggle = document.getElementById('cmToggle');
+  function finishInstantly() { t = T; for (let i = 0; i < 400; i++) layout(); view.first = true; draw(); }
+  function restart() { sample(); if (!running) finishInstantly(); else draw(); }
+  function frame(now) {
+    const dt = Math.min(.05, (now - last) / 1000); last = now;
+    if (running && visible) {
+      if (t < T) t = Math.min(T, t + dt * Math.max(14, T / 14));   // whole build takes about 14 s
+      else if (holdUntil === null) holdUntil = now + 8000;
+      else if (now > holdUntil) sample();
+      layout(); layout(); draw();
+    }
+    requestAnimationFrame(frame);
+  }
+  toggle.textContent = running ? '일시 정지' : '재생';
+  toggle.addEventListener('click', () => { running = !running; toggle.textContent = running ? '일시 정지' : '재생'; if (!running) draw(); });
+  document.getElementById('cmRestart').addEventListener('click', restart);
+  new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(net);
+  const re = () => setTimeout(() => { readColors(); draw(); }, 0);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', re);
+  new MutationObserver(re).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  new ResizeObserver(resize).observe(net);
+  readColors(); sample(); if (!running) finishInstantly(); resize();
+  requestAnimationFrame(frame);
+})();
 
 </script>
 </body>
