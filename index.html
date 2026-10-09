@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>거듭제곱 법칙과 척도 없는 네트워크: 네트워크 과학 인터랙티브 데모</title>
+<meta name="description" content="거듭제곱 법칙과 척도 없는 네트워크를 직접 실험해 보며 배우는 네트워크 과학 인터랙티브 웹 데모 모음">
+<script>(function(){var t=null;try{t=localStorage.getItem('netsci-theme');}catch(e){}if(t!=='light'&&t!=='dark')t=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --paper:#EEF2F5; --panel:#FFFFFF; --ink:#16233A; --muted:#5A6779; --rule:#D3DAE3;
+  --pink:#D12F78; --green:#23914A; --cyan:#1A86B0; --amber:#C97A10;
+  --serif:'Noto Serif KR','Nanum Myeongjo','AppleMyungjo','Batang',serif;
+  --sans:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  --math:'STIX Two Text','Times New Roman',serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F151D; --panel:#151D28; --ink:#E5EBF3; --muted:#98A5B6; --rule:#283445;
+    --pink:#FF6FAE; --green:#5BD27D; --cyan:#4DC3EC; --amber:#F2B04A; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F151D; --panel:#151D28; --ink:#E5EBF3; --muted:#98A5B6; --rule:#283445;
+  --pink:#FF6FAE; --green:#5BD27D; --cyan:#4DC3EC; --amber:#F2B04A; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+a{color:var(--cyan)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:center;padding:28px 0 40px}
+.kicker{color:var(--muted);margin:0 0 12px;font-size:.95rem}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.18;margin:0;letter-spacing:-.01em}
+h1 .en{display:block;font-family:var(--math);font-style:italic;font-weight:400;font-size:.48em;color:var(--muted);margin-top:12px;letter-spacing:0}
+.lead{max-width:34em;margin:22px 0 18px}
+.credit{font-size:.9rem;color:var(--muted);border-left:3px solid var(--green);padding:4px 0 4px 12px;max-width:38em;margin:0}
+.credit strong{color:var(--ink);font-weight:500}
+.fig svg{width:100%;height:auto;display:block}
+.fig polyline{fill:none;stroke-linejoin:round;stroke-linecap:round}
+.fig .ax{stroke:var(--rule);stroke-width:1}
+.fig .lc{stroke:var(--ink);stroke-width:3}
+.fig .g{stroke:var(--cyan);stroke-width:1.4;opacity:.85}
+.fig .g2{stroke:var(--pink);stroke-width:1.4;opacity:.85}
+.fig figcaption{font-size:.84rem;color:var(--muted);text-align:center;margin-top:4px}
+.m{font-family:var(--math);font-style:italic;white-space:nowrap}
+h2{font-family:var(--serif);font-size:1.6rem;margin:0 0 4px;line-height:1.3}
+h2 span{font-family:var(--math);font-style:italic;font-weight:400;color:var(--muted);font-size:.75em;margin-left:8px}
+section{border-top:2px solid var(--ink);padding:16px 0 40px}
+.lessons{list-style:none;margin:18px 0 0;padding:0;counter-reset:l}
+.lesson{display:grid;grid-template-columns:4.2rem minmax(0,1fr) auto;gap:6px 22px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--rule)}
+.lesson .no{font-family:var(--math);font-weight:600;font-size:2rem;color:var(--pink);line-height:1}
+.lesson h3{font-family:var(--serif);font-size:1.3rem;margin:0;line-height:1.35}
+.lesson .secs{font-size:.88rem;color:var(--muted);margin:2px 0 6px}
+.lesson p{margin:0;max-width:40em}
+.lesson .go{white-space:nowrap;border:1px solid var(--ink);border-radius:6px;padding:6px 16px;color:var(--ink);text-decoration:none;font-weight:500;align-self:center}
+.lesson .go:hover{background:var(--ink);color:var(--paper)}
+.howto{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:16px}
+.howto h3{font-size:1rem;margin:0 0 4px}
+.howto p{margin:0;font-size:.94rem;color:var(--muted)}
+.refs{padding-left:1.4em;margin:14px 0 0;max-width:54em;font-size:.95rem}
+.refs li{margin-bottom:10px}
+.refs i{font-family:var(--math)}
+footer{border-top:1px solid var(--rule);padding:22px 0 44px;font-size:.88rem;color:var(--muted)}
+footer p{margin:0 0 6px;max-width:60em}
+footer strong{color:var(--ink);font-weight:500}
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr;padding-top:28px;gap:16px}
+  .fig{order:-1;max-width:340px;margin:0 auto}
+  .howto{grid-template-columns:1fr;gap:14px}
+  .lesson{grid-template-columns:3rem minmax(0,1fr)}
+  .lesson .go{grid-column:2;justify-self:start;margin-top:8px}
+  body{font-size:16px}
+}
+.theme-btn{border:1px solid var(--rule);background:var(--panel);color:var(--ink);font:inherit;font-size:.85rem;border-radius:20px;padding:4px 12px;cursor:pointer}
+.theme-btn:hover{border-color:var(--ink)}
+.topbar{display:flex;justify-content:flex-end;padding-top:14px}
+
+.m .katex{font-size:1.08em}
+.m{white-space:nowrap}
+.eq{max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle}
+.eq .katex-display{margin:.1em 0}
+.eq .katex{font-size:1.12em}
+.katex .mathnormal,.katex .mathit{font-family:KaTeX_Math}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topbar"><button class="theme-btn" id="themeBtn" type="button"></button></div>
+
+<header class="hero">
+  <div>
+    <p class="kicker">네트워크 과학 인터랙티브 데모</p>
+    <h1>거듭제곱 법칙과 척도 없는 네트워크<span class="en">Power Laws and Scale-Free Networks</span></h1>
+    <p class="lead">허브는 왜 생기고, “척도가 없다”는 것은 무슨 뜻일까? 『네트워크 사이언스』 4장 「척도 없는 성질」과 『네트워크 분석』 3장 「허브」의 내용을 네트워크를 직접 만들고 링크수 분포를 그려 보며 따라가는 웹 데모 모음입니다. 설치 없이 브라우저에서 바로 실행됩니다.</p>
+    <p class="credit">이 데모는 <strong>Claude Opus 5.5</strong>가 제작했으며, <strong>경상국립대학교 물리학과 <a href="https://sites.google.com/view/netscilab/principal-investigator" target="_blank" rel="noopener">이상훈</a> 교수</strong>의 강의자료(<a href="https://www.complexity.kr/?p=1268" target="_blank" rel="noopener">2024 복잡계 여름학교</a>, ‘거듭제곱 법칙과 척도 없는 네트워크’ 강의)를 기반으로 합니다.</p>
+  </div>
+  <figure class="fig" style="margin:0">
+    <svg viewBox="0 0 400 380" role="img" aria-label="로그-로그 척도에서 직선인 거듭제곱 분포와 급격히 꺾이는 푸아송 분포"><line class="ax" x1="40.0" y1="20" x2="40.0" y2="360"/><line class="ax" x1="153.3" y1="20" x2="153.3" y2="360"/><line class="ax" x1="266.7" y1="20" x2="266.7" y2="360"/><line class="ax" x1="380.0" y1="20" x2="380.0" y2="360"/><line class="ax" x1="40" y1="20.0" x2="380" y2="20.0"/><line class="ax" x1="40" y1="105.0" x2="380" y2="105.0"/><line class="ax" x1="40" y1="190.0" x2="380" y2="190.0"/><line class="ax" x1="40" y1="275.0" x2="380" y2="275.0"/><line class="ax" x1="40" y1="360.0" x2="380" y2="360.0"/><polyline class="g" points="40.0,97.7 74.1,77.4 94.1,64.6 108.2,57.1 119.2,53.8 128.2,53.8 135.8,56.6 142.4,61.9 148.1,69.4 153.3,78.8 158.0,90.0 162.3,102.8 166.2,117.1 169.9,132.7 173.3,149.6 176.5,167.7 179.5,187.0 182.3,207.2 184.9,228.5 187.5,250.7 189.9,273.8 192.1,297.8 194.3,322.6 196.4,348.2"/><polyline class="lc" points="40.0,25.4 43.4,28.6 46.8,31.8 50.2,35.0 53.6,38.2 57.0,41.4 60.4,44.5 63.8,47.7 67.2,50.9 70.6,54.1 74.0,57.3 77.4,60.5 80.8,63.7 84.2,66.9 87.6,70.0 91.0,73.2 94.4,76.4 97.8,79.6 101.2,82.8 104.6,86.0 108.0,89.2 111.4,92.4 114.8,95.5 118.2,98.7 121.6,101.9 125.0,105.1 128.4,108.3 131.8,111.5 135.2,114.7 138.6,117.9 142.0,121.0 145.4,124.2 148.8,127.4 152.2,130.6 155.6,133.8 159.0,137.0 162.4,140.2 165.8,143.4 169.2,146.5 172.6,149.7 176.0,152.9 179.4,156.1 182.8,159.3 186.2,162.5 189.6,165.7 193.0,168.9 196.4,172.0 199.8,175.2 203.2,178.4 206.6,181.6 210.0,184.8 213.4,188.0 216.8,191.2 220.2,194.4 223.6,197.5 227.0,200.7 230.4,203.9 233.8,207.1 237.2,210.3 240.6,213.5 244.0,216.7 247.4,219.9 250.8,223.0 254.2,226.2 257.6,229.4 261.0,232.6 264.4,235.8 267.8,239.0 271.2,242.2 274.6,245.4 278.0,248.5 281.4,251.7 284.8,254.9 288.2,258.1 291.6,261.3 295.0,264.5 298.4,267.7 301.8,270.9 305.2,274.0 308.6,277.2 312.0,280.4 315.4,283.6 318.8,286.8 322.2,290.0 325.6,293.2 329.0,296.4 332.4,299.5 335.8,302.7 339.2,305.9 342.6,309.1 346.0,312.3 349.4,315.5 352.8,318.7 356.2,321.9 359.6,325.0 363.0,328.2 366.4,331.4 369.8,334.6 373.2,337.8 376.6,341.0 380.0,344.2"/></svg>
+    <figcaption>로그-로그 척도에서 거듭제곱 분포(<span class="m"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>k</mi><mrow><mo>−</mo><mn>2.5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">k^{-2.5}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">2.5</span></span></span></span></span></span></span></span></span></span></span></span></span>)는 직선이고, 평균이 6인 푸아송 분포는 급격히 꺾여 떨어집니다.</figcaption>
+  </figure>
+</header>
+
+<section aria-labelledby="list-h">
+  <h2 id="list-h">데모 목록<span>contents</span></h2>
+  <ol class="lessons">
+    <li class="lesson">
+      <span class="no">01</span>
+      <div>
+        <h3>거듭제곱 분포와 척도 없음</h3>
+        <p class="secs">강의자료 1~16쪽</p>
+        <p>월드와이드웹과 허브, 무작위 네트워크와 척도 없는 네트워크의 링크수 분포 비교, 로그 척도에서의 직선, 척도 변환과 “척도 없음”의 의미, 프랙탈 차원, 이산적인 형식과 연속적인 형식의 정규화.</p>
+      </div>
+      <a class="go" href="01-power-law-scale-free.html">열기</a>
+    </li>
+    <li class="lesson">
+      <span class="no">02</span>
+      <div>
+        <h3>허브와 모멘트</h3>
+        <p class="secs">강의자료 17~30쪽</p>
+        <p>허브와 꼬리, 가장 큰 허브의 크기 k<sub>max</sub> ~ N<sup>1/(γ−1)</sup>와 ln N, 고속도로와 항공로, 링크수 분포의 모멘트와 발산, 실제 네트워크의 표준편차, 보편성.</p>
+      </div>
+      <a class="go" href="02-hubs-moments.html">열기</a>
+    </li>
+    <li class="lesson">
+      <span class="no">03</span>
+      <div>
+        <h3>링크수 분포 그리기와 지수 측정</h3>
+        <p class="secs">강의자료 31~48쪽</p>
+        <p>선형 묶기, 로그 묶기, 누적 분포, 등수 그림, 최소제곱법과 최대우도추정, 콜모고로프-스미르노프 거리, 적합도 검정과 p-값, “척도 없는 네트워크는 드물다” 논쟁.</p>
+      </div>
+      <a class="go" href="03-plotting-fitting.html">열기</a>
+    </li>
+    <li class="lesson">
+      <span class="no">04</span>
+      <div>
+        <h3>네트워크 만들기와 꼬리의 종류</h3>
+        <p class="secs">강의자료 49~72쪽</p>
+        <p>극단적인 좁은 세상, 링크수 지수의 역할과 에르되시-갈라이 정리, 구조 모형, 이웃 수 보존 무작위화, 숨은 매개변수 모형, 두꺼운 꼬리와 얇은 꼬리, 혼합된 분포.</p>
+      </div>
+      <a class="go" href="04-networks-tails.html">열기</a>
+    </li>
+    <!--
+      새 데모를 추가할 때는 아래 형식을 복사해 번호, 제목, 범위, 설명, 파일 이름을 바꾸세요.
+    <li class="lesson">
+      <span class="no">02</span>
+      <div>
+        <h3>제목</h3>
+        <p class="secs">강의자료 x~y쪽</p>
+        <p>한두 문장 설명.</p>
+      </div>
+      <a class="go" href="02-파일이름.html">열기</a>
+    </li>
+    -->
+  </ol>
+</section>
+
+<section aria-labelledby="how-h">
+  <h2 id="how-h">사용법<span>how to use</span></h2>
+  <div class="howto">
+    <div><h3>네트워크 만들기</h3><p>네트워크를 새로 만들거나 매개변수를 바꾸면, 노드 배치와 링크수 분포가 브라우저에서 바로 다시 계산됩니다.</p></div>
+    <div><h3>매개변수 바꾸기</h3><p>링크수 지수 γ, 평균 링크수 〈k〉 같은 매개변수를 슬라이더로 바꾸고, 축을 선형 척도와 로그 척도로 바꿔 가며 분포를 비교할 수 있습니다.</p></div>
+    <div><h3>글과 함께 읽기</h3><p>각 데모 옆의 설명은 강의자료의 흐름을 따릅니다. 중요한 용어에는 괄호 안에 영어 원어를 함께 적었습니다.</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="ref-h">
+  <h2 id="ref-h">참고문헌<span>references</span></h2>
+  <ol class="refs">
+    <li>『<a href="https://www.acornpub.co.kr/product/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%82%AC%EC%9D%B4%EC%96%B8%EC%8A%A4/5911/category/25/display/1/" target="_blank" rel="noopener">네트워크 사이언스</a>』 (에이콘출판사, 2023), <a href="https://scholar.google.com/citations?user=YtV_KAgAAAAJ" target="_blank" rel="noopener">이미진</a>·<a href="https://scholar.google.com/citations?user=F_tGTBYAAAAJ" target="_blank" rel="noopener">윤진혁</a>·<a href="https://sites.google.com/view/netscilab/principal-investigator" target="_blank" rel="noopener">이상훈</a>·<a href="https://scholar.google.com/citations?user=kXggWVUAAAAJ" target="_blank" rel="noopener">이은</a>·<a href="https://scholar.google.com/citations?user=EAxaIyYAAAAJ&amp;hl=en" target="_blank" rel="noopener">조항현</a>·<a href="https://scholar.google.dk/citations?user=52OfnhEAAAAJ" target="_blank" rel="noopener">김희태</a>·<a href="https://scholar.google.com/citations?user=GUpdvGoAAAAJ" target="_blank" rel="noopener">손승우</a> 옮김. 원서: <a href="https://scholar.google.com/citations?user=vsj2slIAAAAJ&amp;hl=en" target="_blank" rel="noopener">Albert-László Barabási</a>, <i><a href="https://networksciencebook.com/" target="_blank" rel="noopener">Network Science</a></i> (Cambridge University Press, 2016). 4장 「척도 없는 성질」.</li>
+    <li>『<a href="https://www.acornpub.co.kr/product/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%B6%84%EC%84%9D/5797/category/25/display/1/" target="_blank" rel="noopener">네트워크 분석</a>』 (에이콘출판사, 2022), <a href="https://scholar.google.com/citations?user=GUpdvGoAAAAJ" target="_blank" rel="noopener">손승우</a>·<a href="https://scholar.google.com/citations?user=4nirJyUAAAAJ" target="_blank" rel="noopener">엄영호</a>·<a href="https://sites.google.com/view/netscilab/principal-investigator" target="_blank" rel="noopener">이상훈</a>·<a href="https://scholar.google.com/citations?user=kXggWVUAAAAJ" target="_blank" rel="noopener">이은</a>·<a href="https://scholar.google.dk/citations?user=52OfnhEAAAAJ" target="_blank" rel="noopener">김희태</a>·<a href="https://scholar.google.com/citations?user=YtV_KAgAAAAJ" target="_blank" rel="noopener">이미진</a> 옮김. 원서: <a href="https://scholar.google.com/citations?user=f_kGJwkAAAAJ" target="_blank" rel="noopener">Filippo Menczer</a>, <a href="https://scholar.google.com/citations?user=NDrCCokAAAAJ" target="_blank" rel="noopener">Santo Fortunato</a>, and <a href="https://scholar.google.com/citations?user=oZC6UJsAAAAJ" target="_blank" rel="noopener">Clayton A. Davis</a>, <i><a href="https://www.amazon.com/First-Course-Network-Science/dp/1108471137" target="_blank" rel="noopener">A First Course in Network Science</a></i> (Cambridge University Press, 2020). 3장 「허브」.</li>
+  </ol>
+</section>
+
+<footer>
+  <p>제작: <strong>Claude Opus 5.5</strong>(Anthropic). 내용: <strong>경상국립대학교 물리학과 <a href="https://sites.google.com/view/netscilab/principal-investigator" target="_blank" rel="noopener">이상훈</a> 교수</strong> 강의자료 기반.</p>
+  <p>모든 계산은 브라우저에서 이루어지며, 외부 라이브러리 없이 HTML, CSS, JavaScript만으로 작성되었습니다.</p>
+</footer>
+
+</div>
+<script>
+(function(){var b=document.getElementById('themeBtn');if(!b)return;var lab={light:'☀ 라이트',dark:'☾ 다크'};
+function cur(){return document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}
+function show(){var m=cur();b.textContent=lab[m];b.setAttribute('aria-label','화면 모드: '+(m==='dark'?'다크':'라이트')+'. 누르면 '+(m==='dark'?'라이트':'다크')+' 모드로 바뀝니다.');}
+b.addEventListener('click',function(){var m=cur()==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',m);try{localStorage.setItem('netsci-theme',m);}catch(e){}show();});show();})();
+
+</script>
+</body>
+</html>
