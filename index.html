@@ -91,6 +91,12 @@ footer strong{color:var(--ink);font-weight:500}
   .lesson .go{grid-column:2;justify-self:start;margin-top:8px}
   body{font-size:16px}
 }
+.course{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 28px;align-items:center;margin-top:14px}
+.course p{margin:0;max-width:40em}
+.course-links{display:flex;flex-direction:column;gap:8px}
+.course-links a{white-space:nowrap;border:1px solid var(--ink);border-radius:6px;padding:6px 16px;color:var(--ink);text-decoration:none;font-weight:500;text-align:center}
+.course-links a:hover{background:var(--ink);color:var(--paper)}
+@media (max-width:820px){.course{grid-template-columns:1fr}.course-links{flex-direction:row;flex-wrap:wrap}}
 .theme-btn{border:1px solid var(--rule);background:var(--panel);color:var(--ink);font:inherit;font-size:.85rem;border-radius:20px;padding:4px 12px;cursor:pointer}
 .theme-btn:hover{border-color:var(--ink)}
 .topbar{display:flex;justify-content:flex-end;padding-top:14px}
@@ -180,6 +186,19 @@ footer strong{color:var(--ink);font-weight:500}
     </li>
     -->
   </ol>
+</section>
+
+<section aria-labelledby="course-h">
+  <h2 id="course-h">정규 교과목<span>course</span></h2>
+  <div class="course">
+    <div>
+      <p>이 특강의 주제는 경상국립대학교 물리학과 정규 교과목 「네트워크 과학」에서도 다룹니다. 교과목 보조자료 페이지에는 네트워크의 기본 요소에서 네트워크 동역학까지 열한 가지 브라우저 시뮬레이션이 모여 있으며, 그중 일곱 번째 데모 「척도 없는 네트워크」가 이 특강과 같은 주제를 다룹니다. 무작위 네트워크와 척도 없는 네트워크의 비교에서 시작해, 무작위 고장과 허브 공격에 대한 견고성, 경로 길이까지 이어집니다.</p>
+    </div>
+    <div class="course-links">
+      <a href="https://lshlj82.github.io/netsci-course-GNU/">교과목 페이지</a>
+      <a href="https://lshlj82.github.io/SFN/">척도 없는 네트워크 데모</a>
+    </div>
+  </div>
 </section>
 
 <section aria-labelledby="how-h">
