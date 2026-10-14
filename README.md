@@ -2,7 +2,7 @@
 
 『[네트워크 사이언스](https://www.acornpub.co.kr/product/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%82%AC%EC%9D%B4%EC%96%B8%EC%8A%A4/5911/category/25/display/1/)』(에이콘출판사, 2023) 4장 **척도 없는 성질(the scale-free property)** 과 『[네트워크 분석](https://www.acornpub.co.kr/product/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%B6%84%EC%84%9D/5797/category/25/display/1/)』(에이콘출판사, 2022) 3장 **허브(hubs)** 의 내용을, 네트워크를 직접 만들고 링크수 분포를 그려 보며 배우는 웹 데모 모음입니다.
 
-경상국립대학교 물리학과 [이상훈](https://sites.google.com/view/netscilab/principal-investigator) 교수가 [2024 복잡계 여름학교](https://www.complexity.kr/?p=1268)에서 진행한 ‘거듭제곱 법칙과 척도 없는 네트워크’ 강의의 강의자료를 기반으로, Claude Opus 5.5(Anthropic)가 제작했습니다.
+경상국립대학교 물리학과 [이상훈](https://lshlj82.github.io/pi.html) 교수가 [2024 복잡계 여름학교](https://www.complexity.kr/?p=1268)에서 진행한 ‘거듭제곱 법칙과 척도 없는 네트워크’ 강의의 강의자료를 기반으로, Claude Opus 5.5(Anthropic)가 제작했습니다.
 
 **데모 바로가기:** https://lshlj82.github.io/netsci-summer-school/
 
