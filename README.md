@@ -73,9 +73,9 @@ python3 -m http.server 8000
 
 ## 참고문헌
 
-1. [네트워크 사이언스](https://www.acornpub.co.kr/product/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%82%AC%EC%9D%B4%EC%96%B8%EC%8A%A4/5911/category/25/display/1/) (에이콘출판사, 2023), [이미진](https://scholar.google.com/citations?user=YtV_KAgAAAAJ)·[윤진혁](https://scholar.google.com/citations?user=F_tGTBYAAAAJ)·[이상훈](https://sites.google.com/view/netscilab/principal-investigator)·[이은](https://scholar.google.com/citations?user=kXggWVUAAAAJ)·[조항현](https://scholar.google.com/citations?user=EAxaIyYAAAAJ&hl=en)·[김희태](https://scholar.google.dk/citations?user=52OfnhEAAAAJ)·[손승우](https://scholar.google.com/citations?user=GUpdvGoAAAAJ) 옮김.
+1. [네트워크 사이언스](https://www.acornpub.co.kr/product/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%82%AC%EC%9D%B4%EC%96%B8%EC%8A%A4/5911/category/25/display/1/) (에이콘출판사, 2023), [이미진](https://scholar.google.com/citations?user=YtV_KAgAAAAJ)·[윤진혁](https://scholar.google.com/citations?user=F_tGTBYAAAAJ)·[이상훈](https://lshlj82.github.io/pi.html)·[이은](https://scholar.google.com/citations?user=kXggWVUAAAAJ)·[조항현](https://scholar.google.com/citations?user=EAxaIyYAAAAJ&hl=en)·[김희태](https://scholar.google.dk/citations?user=52OfnhEAAAAJ)·[손승우](https://scholar.google.com/citations?user=GUpdvGoAAAAJ) 옮김.
    * 원서: [Albert-László Barabási](https://scholar.google.com/citations?user=vsj2slIAAAAJ&hl=en), [Network Science](https://networksciencebook.com/) (Cambridge University Press, 2016).
-2. [네트워크 분석](https://www.acornpub.co.kr/product/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%B6%84%EC%84%9D/5797/category/25/display/1/) (에이콘출판사, 2022), [손승우](https://scholar.google.com/citations?user=GUpdvGoAAAAJ)·[엄영호](https://scholar.google.com/citations?user=4nirJyUAAAAJ)·[이상훈](https://sites.google.com/view/netscilab/principal-investigator)·[이은](https://scholar.google.com/citations?user=kXggWVUAAAAJ)·[김희태](https://scholar.google.dk/citations?user=52OfnhEAAAAJ)·[이미진](https://scholar.google.com/citations?user=YtV_KAgAAAAJ) 옮김.
+2. [네트워크 분석](https://www.acornpub.co.kr/product/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%B6%84%EC%84%9D/5797/category/25/display/1/) (에이콘출판사, 2022), [손승우](https://scholar.google.com/citations?user=GUpdvGoAAAAJ)·[엄영호](https://scholar.google.com/citations?user=4nirJyUAAAAJ)·[이상훈](https://lshlj82.github.io/pi.html)·[이은](https://scholar.google.com/citations?user=kXggWVUAAAAJ)·[김희태](https://scholar.google.dk/citations?user=52OfnhEAAAAJ)·[이미진](https://scholar.google.com/citations?user=YtV_KAgAAAAJ) 옮김.
    * 원서: [Filippo Menczer](https://scholar.google.com/citations?user=f_kGJwkAAAAJ), [Santo Fortunato](https://scholar.google.com/citations?user=NDrCCokAAAAJ), and [Clayton A. Davis](https://scholar.google.com/citations?user=oZC6UJsAAAAJ), [A First Course in Network Science](https://www.amazon.com/First-Course-Network-Science/dp/1108471137) (Cambridge University Press, 2020).
 3. R. Albert, H. Jeong, and A.-L. Barabási, “[Diameter of the World-Wide Web](https://doi.org/10.1038/43601),” *Nature* **401**, 130 (1999).
 4. M. P. H. Stumpf and M. A. Porter, “[Critical Truths About Power Laws](https://doi.org/10.1126/science.1216142),” *Science* **335**, 665 (2012).
@@ -92,5 +92,5 @@ python3 -m http.server 8000
 
 ## 제작
 
-- **내용**: [이상훈](https://sites.google.com/view/netscilab/principal-investigator) (경상국립대학교 물리학과), [2024 복잡계 여름학교](https://www.complexity.kr/?p=1268) ‘거듭제곱 법칙과 척도 없는 네트워크’ 강의자료
+- **내용**: [이상훈](https://lshlj82.github.io/pi.html) (경상국립대학교 물리학과), [2024 복잡계 여름학교](https://www.complexity.kr/?p=1268) ‘거듭제곱 법칙과 척도 없는 네트워크’ 강의자료
 - **제작**: Claude Opus 5.5 (Anthropic)
