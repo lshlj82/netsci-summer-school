@@ -16,7 +16,7 @@
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
   --paper:#EEF2F5; --panel:#FFFFFF; --ink:#16233A; --muted:#5A6779; --rule:#D3DAE3;
-  --pink:#D12F78; --green:#23914A; --cyan:#1A86B0; --amber:#C97A10;
+  --pink:#D12F78; --green:#23914A; --cyan:#1A86B0; --amber:#C97A10; --cyan-text:#136C8E; --amber-text:#8F5600;
   --serif:'Noto Serif KR','Nanum Myeongjo','AppleMyungjo','Batang',serif;
   --sans:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
   --math:'STIX Two Text','Times New Roman',serif;
@@ -25,16 +25,16 @@
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     --paper:#0F151D; --panel:#151D28; --ink:#E5EBF3; --muted:#98A5B6; --rule:#283445;
-    --pink:#FF6FAE; --green:#5BD27D; --cyan:#4DC3EC; --amber:#F2B04A; color-scheme:dark;
+    --pink:#FF6FAE; --green:#5BD27D; --cyan:#4DC3EC; --amber:#F2B04A; --cyan-text:#4DC3EC; --amber-text:#F2B04A; color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --paper:#0F151D; --panel:#151D28; --ink:#E5EBF3; --muted:#98A5B6; --rule:#283445;
-  --pink:#FF6FAE; --green:#5BD27D; --cyan:#4DC3EC; --amber:#F2B04A; color-scheme:dark;
+  --pink:#FF6FAE; --green:#5BD27D; --cyan:#4DC3EC; --amber:#F2B04A; --cyan-text:#4DC3EC; --amber-text:#F2B04A; color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:inherit}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
-a{color:var(--cyan)}
+a{color:var(--cyan-text)}
 :focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 .hero{padding:28px 0 40px}
@@ -44,8 +44,8 @@ a{color:var(--cyan)}
 .panel p{font-size:.86rem;color:var(--muted);margin:8px 0 0;line-height:1.6}
 #netView{display:block;width:100%;aspect-ratio:3/2}
 #degView{display:block;width:100%;aspect-ratio:1/1}
-.c-node{color:var(--cyan);font-weight:500}
-.c-hi{color:var(--amber);font-weight:500}
+.c-node{color:var(--cyan-text);font-weight:500}
+.c-hi{color:var(--amber-text);font-weight:500}
 .cm-controls{display:flex;gap:8px;margin-top:12px}
 .btn{border:1px solid var(--ink);border-radius:6px;background:transparent;color:var(--ink);font:inherit;font-size:.9rem;padding:5px 14px;cursor:pointer}
 .btn:hover{background:var(--ink);color:var(--paper)}
@@ -276,6 +276,7 @@ b.addEventListener('click',function(){var m=cur()==='dark'?'light':'dark';docume
   }
 
   function layout() {
+    let mv = 0;
     const fx = new Float64Array(N), fy = new Float64Array(N);
     for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) {
       let dx = X[i] - X[j], dy = Y[i] - Y[j], d2 = dx * dx + dy * dy;
@@ -288,8 +289,9 @@ b.addEventListener('click',function(){var m=cur()==='dark'?'light':'dark';docume
       fx[i] -= X[i] * .012; fy[i] -= Y[i] * .012;
       VX[i] = (VX[i] + fx[i]) * .55; VY[i] = (VY[i] + fy[i]) * .55;
       const s = Math.hypot(VX[i], VY[i]); if (s > .4) { VX[i] *= .4 / s; VY[i] *= .4 / s; }
-      X[i] += VX[i]; Y[i] += VY[i];
+      X[i] += VX[i]; Y[i] += VY[i]; mv = Math.max(mv, Math.min(s, .4));
     }
+    return mv;
   }
 
   // ---------- colors ----------
@@ -322,6 +324,7 @@ b.addEventListener('click',function(){var m=cur()==='dark'?'light':'dark';docume
     const ts = Math.min((NW - 50) / Math.max(4, x1 - x0), (NH - 60) / Math.max(4, y1 - y0));
     const k = view.first ? 1 : .08; view.first = false;
     view.s += (ts - view.s) * k; view.cx += ((x0 + x1) / 2 - view.cx) * k; view.cy += ((y0 + y1) / 2 - view.cy) * k;
+    view.moving = Math.abs(ts - view.s) > 1e-3 * ts || Math.abs((x0 + x1) / 2 - view.cx) * view.s > .3 || Math.abs((y0 + y1) / 2 - view.cy) * view.s > .3;
     const SX = x => NW / 2 + (x - view.cx) * view.s, SY = y => NH / 2 + 12 + (y - view.cy) * view.s;
     const tE = Math.floor(t), cur = currentDegrees(), building = tE < T;
     let kmax = 1; for (let i = 0; i < N; i++) kmax = Math.max(kmax, deg0[i]);
@@ -404,18 +407,22 @@ b.addEventListener('click',function(){var m=cur()==='dark'?'light':'dark';docume
   function draw() { if (!K.node || !edges || !NW) return; drawNet(); drawDeg(); }
 
   // ---------- animation ----------
-  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let running = !reduceMotion, last = performance.now(), visible = true;
+  const reduceMQ = matchMedia('(prefers-reduced-motion: reduce)');
+  let running = !reduceMQ.matches, last = performance.now(), visible = true, settled = false;
   const toggle = document.getElementById('cmToggle');
   function finishInstantly() { t = T; for (let i = 0; i < 400; i++) layout(); view.first = true; draw(); }
-  function restart() { sample(); if (!running) finishInstantly(); else draw(); }
+  function restart() { sample(); settled = false; if (!running) finishInstantly(); else draw(); }
+  // follow a change of the reduced-motion setting while the page is open
+  reduceMQ.addEventListener('change', () => { if (reduceMQ.matches && running) { running = false; toggle.textContent = '재생'; if (t < T) finishInstantly(); else draw(); } });
   function frame(now) {
     const dt = Math.min(.05, (now - last) / 1000); last = now;
     if (running && visible) {
       if (t < T) t = Math.min(T, t + dt * Math.max(14, T / 14));   // whole build takes about 14 s
       else if (holdUntil === null) holdUntil = now + 8000;
-      else if (now > holdUntil) sample();
-      layout(); layout(); draw();
+      else if (now > holdUntil) { sample(); settled = false; }
+      // once built and at rest, the O(N²) layout is not repeated during the pause before the next sample
+      if (!settled) { const v = Math.max(layout(), layout()); if (t >= T && (v < .002 || (holdUntil !== null && now > holdUntil - 4000))) settled = true; }   // at rest, or 4 s after the build
+      if (!settled || view.moving) draw();
     }
     requestAnimationFrame(frame);
   }
