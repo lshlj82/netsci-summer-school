@@ -182,6 +182,10 @@ textarea.seq{width:100%;font:inherit;font-family:var(--math);font-size:1rem;colo
 .katex .mathnormal,.katex .mathit{font-family:KaTeX_Math}
 
 </style>
+<style id="ko-emphasis">/* Korean has no true italics: slanted Hangul reads as weak, so Korean emphasis is bold and other Korean italic text stays upright (math and <i> variables keep their slant) */
+html :lang(ko):not(i, i *, var, var *, .katex, .katex *, mjx-container, mjx-container *, svg, svg *), html[data-lang="ko"] :not(i, i *, var, var *, .katex, .katex *, mjx-container, mjx-container *, svg, svg *){font-style:normal}
+html :lang(ko) em, html[data-lang="ko"] em{font-weight:600}
+</style>
 </head>
 <body>
 
